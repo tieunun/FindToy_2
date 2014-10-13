@@ -22,7 +22,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>toy_animation_0.png</filename>
+        <filename>toy_animation_1.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>toy_animation_0.plist</filename>
+        <filename>toy_animation_1.plist</filename>
         <key>multiPack</key>
         <false/>
         <key>mainExtension</key>
@@ -148,16 +148,24 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>toy_cap_pistol_3.png</filename>
-            <filename>toy_cap_pistol_bullet.png</filename>
-            <filename>toy_cap_pistol_0.png</filename>
-            <filename>toy_cap_pistol_1.png</filename>
-            <filename>toy_cap_pistol_2.png</filename>
-            <filename>toy_transformer_0_3.png</filename>
-            <filename>toy_transformer_1_0.png</filename>
-            <filename>toy_transformer_1_1.png</filename>
-            <filename>toy_transformer_0_1.png</filename>
-            <filename>toy_frog_0.png</filename>
+            <filename>toy_transformer_0_4.png</filename>
+            <filename>toy_transformer_0_0.png</filename>
+            <filename>toy_transformer_0_2.png</filename>
+            <filename>toy_panda_hand_0_1.png</filename>
+            <filename>toy_panda_hand_1_0.png</filename>
+            <filename>toy_panda_hand_1_1.png</filename>
+            <filename>toy_panda_head_1_0.png</filename>
+            <filename>toy_panda_head_1_1.png</filename>
+            <filename>toy_panda_hand_0_0.png</filename>
+            <filename>toy_panda_0_1.png</filename>
+            <filename>toy_panda_0_0.png</filename>
+            <filename>toy_panda_1_1.png</filename>
+            <filename>toy_panda_1_2.png</filename>
+            <filename>toy_panda_1_3.png</filename>
+            <filename>toy_panda_1_0.png</filename>
+            <filename>toy_panda_head_0_0.png</filename>
+            <filename>toy_panda_head_0_1.png</filename>
+            <filename>toy_panda_head_0_2.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

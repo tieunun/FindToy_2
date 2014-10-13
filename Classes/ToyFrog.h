@@ -9,4 +9,6 @@ public:
 	CREATE_FUNC(ToyFrog);
 	virtual void onEnter();
 	virtual void play();
+private:
+	Sprite *_speeder;
 };

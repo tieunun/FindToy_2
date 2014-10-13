@@ -14,6 +14,7 @@ ToyHarmonica::~ToyHarmonica(void)
 void ToyHarmonica::onEnter()
 {
 	BaseNode::onEnter();
+	this->_type = k_toy_harmonica;
 	auto body = Sprite::createWithSpriteFrameName(GAME_DATA_STRING("toy_harmonica"));
 	this->addChild(body);
 

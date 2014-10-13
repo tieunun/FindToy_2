@@ -39,3 +39,4 @@ void ToyPistol::play()
     
     _body->runAction(Animate::create(animation));
 }
+

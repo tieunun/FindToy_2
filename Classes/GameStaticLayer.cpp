@@ -3,6 +3,9 @@
 #include "Desk.h"
 #include "ToyPistol.h"
 #include "ToyHarmonica.h"
+#include "ToyTransformer.h"
+#include "ToyPanda.h"
+#include "ToyFrog.h"
 
 GameStaticLayer::GameStaticLayer()
 {
@@ -31,10 +34,14 @@ bool GameStaticLayer::init()
 	desk->setPosition(this->getPositionInWinSize(deskPos));
 	this->addChild(desk);
 
-	auto toy = ToyHarmonica::create();
+	auto toy = ToyFrog::create();
 	this->addChild(toy,1,2);
 	toy->setPosition(_winSize/2);
     
+	auto listenter = EventListenerTouchOneByOne::create();
+	listenter->setSwallowTouches(false);
+	listenter->onTouchBegan = CC_CALLBACK_2(GameStaticLayer::abcdefg,this);
+	this->_eventDispatcher->addEventListenerWithSceneGraphPriority(listenter,toy);
 
 	return true;
 }

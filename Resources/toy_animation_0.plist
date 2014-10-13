@@ -7,7 +7,7 @@
             <key>toy_cap_pistol_0.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,570},{795,566}}</string>
+                <string>{{1367,783},{795,566}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>toy_cap_pistol_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{799,2},{795,566}}</string>
+                <string>{{570,895},{795,566}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,11 +33,11 @@
             <key>toy_cap_pistol_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{795,566}}</string>
+                <string>{{2,602},{795,566}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{795,566}}</string>
                 <key>sourceSize</key>
@@ -46,7 +46,7 @@
             <key>toy_cap_pistol_3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1367},{795,539}}</string>
+                <string>{{515,1463},{795,539}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,15 +59,80 @@
             <key>toy_cap_pistol_bullet.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1596,2},{256,93}}</string>
+                <string>{{570,602},{256,93}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{256,93}}</string>
                 <key>sourceSize</key>
                 <string>{256,93}</string>
+            </dict>
+            <key>toy_frog_0.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1312,1580},{355,405}}</string>
+                <key>offset</key>
+                <string>{-46,23}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{355,405}}</string>
+                <key>sourceSize</key>
+                <string>{447,451}</string>
+            </dict>
+            <key>toy_transformer_0_1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,1399},{511,598}}</string>
+                <key>offset</key>
+                <string>{188,-2}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{379,4},{511,598}}</string>
+                <key>sourceSize</key>
+                <string>{893,602}</string>
+            </dict>
+            <key>toy_transformer_0_3.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,2},{687,598}}</string>
+                <key>offset</key>
+                <string>{100,-2}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{203,4},{687,598}}</string>
+                <key>sourceSize</key>
+                <string>{893,602}</string>
+            </dict>
+            <key>toy_transformer_1_0.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1287,2},{779,594}}</string>
+                <key>offset</key>
+                <string>{57,-4}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{114,8},{779,594}}</string>
+                <key>sourceSize</key>
+                <string>{893,602}</string>
+            </dict>
+            <key>toy_transformer_1_1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{691,2},{891,594}}</string>
+                <key>offset</key>
+                <string>{-1,-4}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,8},{891,594}}</string>
+                <key>sourceSize</key>
+                <string>{893,602}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -79,7 +144,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:d3e07f1b73710f8020b1fd5e63b49f2f:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:fd6296815a452ee24e49d7eb73e7126f:1/1$</string>
             <key>textureFileName</key>
             <string>toy_animation_0.png</string>
         </dict>

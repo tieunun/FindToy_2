@@ -11,6 +11,9 @@ public:
 	virtual void onEnter();
 	void play();
 
+
+
 private:
+	void onAnimateDone();
 };
 

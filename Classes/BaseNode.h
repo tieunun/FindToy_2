@@ -10,5 +10,7 @@ public:
 	virtual ~BaseNode(void);
 
 	virtual void onEnter();
+protected:
+	Rect getRectInGL(Node *node);
 };
 

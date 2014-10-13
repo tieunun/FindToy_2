@@ -49,10 +49,36 @@
 	<key>toy_cap_pistol_animation_count</key>
 	<string>3</string>
 	<key>toy_background_type</key>
-	<string>toy_background_%d.png</string>
+	<string>toy_background_%d.jpg</string>
 	<key>toy_harmonica</key>
 	<string>toy_harmonica.png</string>
 	<key>harmonica_num</key>
 	<string>harmonica_num_%d.png</string>
+	<key>toy_transformer</key>
+	<string>toy_transformer_0_0.png</string>
+	<key>toy_transformer_animation</key>
+	<string>toy_transformer_%d_%d.png</string>
+	<key>toy_panda</key>
+	<string>toy_panda_0.png</string>
+	<key>toy_panda_animation_tickle</key>
+	<string>toy_panda_0_%d.png</string>
+	<key>toy_panda_animation_cry</key>
+	<string>toy_panda_1_%d.png</string>
+	<key>toy_panda_animation_smile</key>
+	<string>toy_panda_head_0_%d.png</string>
+	<key>toy_panda_animation_head_eat</key>
+	<string>toy_panda_head_1_%d.png</string>
+	<key>toy_panda_animation_hand_eat</key>
+	<string>toy_panda_hand_%d_%d.png</string>
+	<key>toy_panda_head</key>
+	<string>toy_panda_head_0_0.png</string>
+	<key>toy_panda_hand</key>
+	<string>toy_panda_hand_0_0.png</string>
+	<key>toy_panda_downPart</key>
+	<string>toy_panda_body_1.png</string>
+	<key>toy_frog</key>
+	<string>toy_frog_0.png</string>
+	<key>toy_frog_animation</key>
+	<string>toy_frog_%d.png</string>
 </dict>
 </plist>

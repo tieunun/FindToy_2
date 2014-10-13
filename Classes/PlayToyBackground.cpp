@@ -16,6 +16,7 @@ PlayToyBackground *PlayToyBackground::create(ToyType toyType)
 {
 	auto layer = new PlayToyBackground();
 	layer->_type = toyType;
+	layer->init();
 	layer->autorelease();
 	return layer;
 }
