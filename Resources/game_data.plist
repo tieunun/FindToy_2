@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>game_background</key>
+	<string>game_background.jpg</string>
+	<key>shelf</key>
+	<string>shelf.png</string>
+	<key>shelf_position</key>
+	<string>{.6672,.5347}</string>
+	<key>shelf_size</key>
+	<string>{4,4}</string>
+	<key>drawer_nor</key>
+	<string>drawer_nor.png</string>
+	<key>drawer_sel</key>
+	<string>drawer_sel.png</string>
+	<key>drawer_size</key>
+	<string>{186,113}</string>
+	<key>drawer_start_pos</key>
+	<string>{106.5,93}</string>
+	<key>desk</key>
+	<string>desk.png</string>
+	<key>desk_position</key>
+	<string>{.2266,.3569}</string>
+	<key>toy_type_0</key>
+	<string>toy_cap_pistol.png</string>
+	<key>toy_type_1</key>
+	<string>toy_harmonica.png</string>
+	<key>toy_type_2</key>
+	<string>toy_frog.png</string>
+	<key>toy_type_3</key>
+	<string>toy_transformer.png</string>
+	<key>toy_type_4</key>
+	<string>toy_panda.png</string>
+	<key>toy_type_5</key>
+	<string>toy_doll.png</string>
+	<key>toy_type_6</key>
+	<string>toy_helicopter.png</string>
+	<key>toy_type_7</key>
+	<string>toy_grab.png</string>
+	<key>toy_type_8</key>
+	<string>toy_dragon.png</string>
+	<key>toy_type_9</key>
+	<string>toy_chick.png</string>
+	<key>toy_cap_pistol</key>
+	<string>toy_cap_pistol_0.png</string>
+	<key>toy_cap_pistol_animation</key>
+	<string>toy_cap_pistol_%d.png</string>
+	<key>toy_cap_pistol_animation_count</key>
+	<string>3</string>
+	<key>toy_background_type</key>
+	<string>toy_background_%d.png</string>
+	<key>toy_harmonica</key>
+	<string>toy_harmonica.png</string>
+	<key>harmonica_num</key>
+	<string>harmonica_num_%d.png</string>
+</dict>
+</plist>
