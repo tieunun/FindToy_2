@@ -15,6 +15,8 @@ public:
 	void preloadResource();
 
 private:
+
+	void loadKoalaAnimation();
 	GameMainBackground *_background;
 	GameStaticLayer    *_staticLayer;
 };

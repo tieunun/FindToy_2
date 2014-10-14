@@ -80,5 +80,29 @@
 	<string>toy_frog_0.png</string>
 	<key>toy_frog_animation</key>
 	<string>toy_frog_%d.png</string>
+	<key>toy_doll_default</key>
+	<string>toy_doll_default.png</string>
+	<key>toy_doll_hair_small</key>
+	<string>toy_doll_hair_s_%d.png</string>
+	<key>toy_doll_hair_big</key>
+	<string>toy_doll_hair_b_%d.png</string>
+	<key>toy_doll_cloth_small</key>
+	<string>toy_doll_cloth_s_%d.png</string>
+	<key>toy_doll_cloth_big</key>
+	<string>toy_doll_cloth_b_%d.png</string>
+	<key>koala</key>
+	<string>koala_front_0.png</string>
+	<key>koala_animation_front_turn_left</key>
+	<string>koala_front_turn_left_%d.png</string>
+	<key>koala_animation_move_right</key>
+	<string>koala_move_right_%d.png</string>
+	<key>koala_animation_right_turn_back</key>
+	<string>koala_right_turn_back_%d.png</string>
+	<key>koala_animation_up_ladder</key>
+	<string>koala_up_ladder_%d.png</string>
+	<key>koala_animation_down_ladder_gift</key>
+	<string>koala_down_ladder_gift_%d.png</string>
+	<key>koala_animation_drag_ladder</key>
+	<string>koala_up_ladder_0.png</string>
 </dict>
 </plist>

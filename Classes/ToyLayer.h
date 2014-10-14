@@ -11,5 +11,6 @@ public:
 	virtual bool init();
 private:
 	Vector<BaseToy*> toies;
+	std::vector<Vec2> toyPositions;
 };
 

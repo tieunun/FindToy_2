@@ -1,4 +1,5 @@
 #include "ToyDoll.h"
+#include "PlayToyScene.h"
 
 ToyDoll::ToyDoll()
 {
@@ -23,7 +24,7 @@ void ToyDoll::onEnter()
 		_hairs.pushBack(Sprite::createWithSpriteFrameName(frame_name));
 	}
 
-	auto name = GAME_DATA_STRING("toy_doll_clothes");
+    name = GAME_DATA_STRING("toy_doll_cloth_big");
 	for ( int i = 0;i<6;i++)
 	{
 		auto frame_name = StringUtils::format(name.c_str(),i);
@@ -33,7 +34,8 @@ void ToyDoll::onEnter()
 
 void ToyDoll::play()
 {
-
+	auto scene = PlayToyScene::create(k_toy_doll);
+	Director::getInstance()->pushScene(scene);
 }
 
 void ToyDoll::changeCloth(int index)

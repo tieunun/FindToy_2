@@ -1,6 +1,7 @@
 #include "PlayToyBackground.h"
 #include "ToyPistol.h"
 #include "ToyHarmonica.h"
+#include "ClothShelf.h"
 
 PlayToyBackground::PlayToyBackground()
 {
@@ -36,6 +37,13 @@ bool PlayToyBackground::init()
 	switch (_type)
 	{
 	case k_toy_harmonica:
+		break;
+	case k_toy_doll:
+		{
+			auto clothShelf = ClothShelf::create();
+			clothShelf->setPosition(-322,-29);
+			this->addChild(clothShelf);
+		}
 		break;
 	default:
 		break;

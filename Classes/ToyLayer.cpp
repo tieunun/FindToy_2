@@ -1,4 +1,5 @@
 #include "ToyLayer.h"
+#include "GameConfigure.h"
 
 ToyLayer::ToyLayer()
 {
@@ -22,7 +23,11 @@ bool ToyLayer::init()
 		auto toy = BaseToy::create((ToyType)i);
 		
 		toies.pushBack(toy);
+		this->addChild(toy);
+		toy->setVisible(false);
 	}
+
+	toyPositions = GameConfigure::getInstance()->getToyPosition();
 
 	return true;
 }
