@@ -9,6 +9,7 @@ public:
 
 	CREATE_FUNC(Shelf);
 	virtual void onEnter();
+    void onDrawerTouched(Vec2 position);
 
 private:
 	Sprite *_body;

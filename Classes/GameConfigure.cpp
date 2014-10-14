@@ -2,6 +2,7 @@
 #include "GameData.h"
 #include "BaseToy.h"
 
+#define TOY_POSITION "toy_position"
 #define TOY_POSITION_DATA_PATH "toy_positions.plist"
 static GameConfigure *instance = NULL;
 GameConfigure::GameConfigure()
@@ -18,6 +19,14 @@ bool GameConfigure::init()
 {
 	_toyPositions.clear();
 	_defaults = UserDefault::getInstance();
+    
+    if(!_defaults->getBoolForKey(TOY_POSITION))
+    {
+        this->changeToyPostion();
+        _defaults->setBoolForKey(TOY_POSITION, true);
+        _defaults->flush();
+        this->convertVec2ToString();
+    }
 
 	this->convertStringToVec2();
 

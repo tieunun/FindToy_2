@@ -170,9 +170,8 @@
             <filename>koala_up_ladder_0.png</filename>
             <filename>koala_up_ladder_1.png</filename>
             <filename>koala_up_ladder_2.png</filename>
-            <filename>koala_up_ladder_gift_0.png</filename>
-            <filename>koala_up_ladder_gift_1.png</filename>
             <filename>koala_front_0.png</filename>
+            <filename>koala_back_0.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

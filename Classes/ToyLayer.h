@@ -10,9 +10,11 @@ public:
 	~ToyLayer(void);
 
 	virtual bool init();
+    CREATE_FUNC(ToyLayer);
+    void moveKoala(Vec2 position);
 private:
-	Vector<BaseToy*> toies;
-	std::vector<Vec2> toyPositions;
-	Koala *koala;
+	Vector<BaseToy*> _toies;
+	std::vector<Vec2> _toyPositions;
+	Koala *_koala;
 };
 

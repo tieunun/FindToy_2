@@ -1,5 +1,6 @@
 #include "Drawer.h"
 #include "ui/UIButton.h"
+#include "Shelf.h"
 using namespace cocos2d::ui;
 
 Drawer::Drawer(void)
@@ -25,10 +26,14 @@ void Drawer::onEnter()
 
 void Drawer::onDrawerTouched(Ref *pSender,TouchEventType type)
 {
-	auto button = (Button*)pSender;
+	//auto button = (Button*)pSender;
 	switch (type)
 	{
 	case ui::TOUCH_EVENT_ENDED:
+        {
+            auto shelf = (Shelf *)(this->getParent()->getParent());
+            shelf->onDrawerTouched(this->getDrawerPosition());
+        }
 		//to do
 		break;
 	default:

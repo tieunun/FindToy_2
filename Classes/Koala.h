@@ -1,5 +1,6 @@
+#pragma once
 #include "BaseNode.h"
-enum KoalaState
+typedef enum KoalaState
 {
 	k_koala_normal = 0,
 	k_koala_back,
@@ -17,7 +18,7 @@ enum KoalaState
 	k_koala_up_ladder,
 	k_koala_down_ladder,
 	k_koala_down_with_gift
-};
+}KoalaState;
 class Koala:public BaseNode
 {
 public:
@@ -31,6 +32,8 @@ public:
 	void move(Vec2 postion);
 	
 	CC_SYNTHESIZE(Vec2,_originPosition,OriginPosition);
+    CC_SYNTHESIZE(Vec2,_lastPosition,LastPosition);
+
 
 private:
 	void onAnimationDone();
@@ -41,6 +44,6 @@ private:
 	Sprite *_body;
 	KoalaState _state;
 	Vec2 _targetPosition;
-	Vec2 _lastPosition;
 	Vec2 _ladderPosition;
+    bool _isKoalaAimate;
 };

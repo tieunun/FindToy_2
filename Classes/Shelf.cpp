@@ -1,4 +1,5 @@
 #include "Shelf.h"
+#include "GameStaticLayer.h"
 
 Shelf::Shelf()
 {
@@ -36,6 +37,7 @@ void Shelf::onEnter()
 				xOffset +=2;
 			}
 			auto drawer = Drawer::create();
+            drawer->setDrawerPosition(Vec2(j,i));
 			drawer->setPosition(startPos+Vec2(drawerSize.width*j,drawerSize.height*i)+Vec2(xOffset,yOffset));
 			_body->addChild(drawer);
 			_drawers.pushBack(drawer);
@@ -45,4 +47,10 @@ void Shelf::onEnter()
 		xOffset = 0;
 		yOffset +=.5f;
 	}
+}
+
+void Shelf::onDrawerTouched(cocos2d::Vec2 position)
+{
+    auto layer = (GameStaticLayer *)this->getParent();
+    layer->onDrawerTouched(position);
 }

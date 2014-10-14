@@ -25,6 +25,9 @@ bool GameScene::init()
 	_staticLayer = GameStaticLayer::create();
 	this->addChild(_staticLayer);
 
+    _toyLayer = ToyLayer::create();
+    this->addChild(_toyLayer);
+    
 	return true;
 }
 
@@ -180,17 +183,19 @@ void GameScene::preloadResource()
 
 void GameScene::loadKoalaAnimation()
 {
+    //log(FileUtils::getInstance()->fullPathForFilename("toy_animation_0.png").c_str());
 	//front turn left
 	auto name = GAME_DATA_STRING("koala_animation_front_turn_left");
 	auto animation = Animation::create();
 	for (int i = 0;i<2;i++)
 	{
 		auto frame_name = StringUtils::format(name.c_str(),i);
-		animation->addSpriteFrameWithFile(frame_name);
+        auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
+		animation->addSpriteFrame(frame);
 	}
-	animation->setDelayPerUnit(.25f);
+	animation->setDelayPerUnit(.4f);
 	animation->setRestoreOriginalFrame(false);
-	animation->setLoops(10);
+	animation->setLoops(0);
 	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("koala_animation_front_turn_left"));
 
 	//move right
@@ -199,11 +204,12 @@ void GameScene::loadKoalaAnimation()
 	for (int i = 0;i<2;i++)
 	{
 		auto frame_name = StringUtils::format(name.c_str(),i);
-		animation->addSpriteFrameWithFile(frame_name);
+        auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
+		animation->addSpriteFrame(frame);
 	}
 	animation->setDelayPerUnit(.25f);
 	animation->setRestoreOriginalFrame(false);
-	animation->setLoops(10);
+	animation->setLoops(-1);
 	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("koala_animation_move_right"));
 
 	//right turn back
@@ -211,11 +217,14 @@ void GameScene::loadKoalaAnimation()
 	animation = Animation::create();
 	for (int i = 0;i<2;i++)
 	{
-		auto frame_name = StringUtils::format(name.c_str(),i);
-		animation->addSpriteFrameWithFile(frame_name);
+        auto frame_name = StringUtils::format(name.c_str(),i);
+        auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
+        animation->addSpriteFrame(frame);
 	}
-	animation->addSpriteFrameWithFile("koala_back_0.png");
-	animation->setDelayPerUnit(.5f);
+    auto frame_temp = SpriteFrameCache::getInstance()->getSpriteFrameByName("koala_back_0.png");
+    animation->addSpriteFrame(frame_temp);
+    //animation->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("koala_back_0.png"));
+	animation->setDelayPerUnit(.4f);
 	animation->setRestoreOriginalFrame(false);
 	animation->setLoops(0);
 	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("koala_animation_right_turn_back"));
@@ -225,12 +234,13 @@ void GameScene::loadKoalaAnimation()
 	animation = Animation::create();
 	for (int i = 1;i<=2;i++)
 	{
-		auto frame_name = StringUtils::format(name.c_str(),i);
-		animation->addSpriteFrameWithFile(frame_name);
-	}
+        auto frame_name = StringUtils::format(name.c_str(),i);
+        auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
+        animation->addSpriteFrame(frame);
+    }
 	animation->setDelayPerUnit(.25f);
 	animation->setRestoreOriginalFrame(false);
-	animation->setLoops(10);
+	animation->setLoops(-1);
 	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("koala_animation_up_ladder"));
 
 	//down ladder with gitf
@@ -238,30 +248,38 @@ void GameScene::loadKoalaAnimation()
 	animation = Animation::create();
 	for (int i = 0;i<2;i++)
 	{
-		auto frame_name = StringUtils::format(name.c_str(),i);
-		animation->addSpriteFrameWithFile(frame_name);
+        auto frame_name = StringUtils::format(name.c_str(),i);
+        auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
+        animation->addSpriteFrame(frame);
 	}
-	animation->setDelayPerUnit(1.5f);
+	animation->setDelayPerUnit(.25f);
 	animation->setRestoreOriginalFrame(false);
 	animation->setLoops(0);
 	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("koala_animation_down_ladder_gift"));
 
 	//drag ladder
 	name = GAME_DATA_STRING("koala_animation_drag_ladder");
+    auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(name);
 	animation = Animation::create();
-	animation->addSpriteFrameWithFile(name);
-	animation->setDelayPerUnit(1.5f);
+	animation->addSpriteFrame(frame);
+	animation->setDelayPerUnit(.25f);
 	animation->setRestoreOriginalFrame(false);
-	animation->setLoops(10);
+	animation->setLoops(0);
 	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("koala_animation_drag_ladder"));
 
 	//back
+    frame = SpriteFrameCache::getInstance()->getSpriteFrameByName("koala_back_0.png");
 	animation = Animation::create();
-	animation->addSpriteFrameWithFile("koala_back_0.png");
-	animation->setDelayPerUnit(1.5f);
+	animation->addSpriteFrame(frame);
+	animation->setDelayPerUnit(.25f);
 	animation->setRestoreOriginalFrame(false);
 	animation->setLoops(0);
 	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("koala_animation_back"));
+}
+
+void GameScene::moveKoala(cocos2d::Vec2 position)
+{
+    _toyLayer->moveKoala(position);
 }
 
 

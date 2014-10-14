@@ -14,5 +14,6 @@ public:
 	virtual void onEnter();
 	//virtual void init()
 	void onDrawerTouched(Ref *pSender,ui::TouchEventType type);
+    CC_SYNTHESIZE(Vec2, _drawerPosition, DrawerPosition);
 };
 

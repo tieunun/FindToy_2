@@ -8,6 +8,7 @@
 #include "ToyFrog.h"
 #include "ToyDoll.h"
 #include "Koala.h"
+#include "GameScene.h"
 
 GameStaticLayer::GameStaticLayer()
 {
@@ -39,10 +40,10 @@ bool GameStaticLayer::init()
 // 	auto toy = ToyFrog::create();
 // 	this->addChild(toy,1,2);
 // 	toy->setPosition(_winSize/2);
-	auto koala = Koala::create();
-	this->addChild(koala);
-	koala->setPosition(_winSize/2);
-//     
+//	auto koala = Koala::create();
+//	this->addChild(koala);
+//	koala->setPosition(_winSize/2);
+//
 // 	auto listenter = EventListenerTouchOneByOne::create();
 // 	listenter->setSwallowTouches(false);
 // 	listenter->onTouchBegan = CC_CALLBACK_2(GameStaticLayer::abcdefg,this);
@@ -58,6 +59,12 @@ bool GameStaticLayer::abcdefg(cocos2d::Touch *touch, cocos2d::Event *unusedEvent
 // // 	auto toy = ToyDoll::create();
 // // 	toy->play();
     return true;
+}
+
+void GameStaticLayer::onDrawerTouched(cocos2d::Vec2 position)
+{
+    auto scene = (GameScene*)this->getParent();
+    scene->moveKoala(position);
 }
 
 
