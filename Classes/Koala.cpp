@@ -22,7 +22,7 @@ void Koala::onEnter()
 	listener->setSwallowTouches(true);
 	listener->onTouchBegan = [=](Touch *touch,Event *event)->bool
 	{
-		_body->runAction(this->getActionForState(k_koala_back_turn_left));
+		_body->runAction(this->getActionForState(k_koala_front_turn_right));
 		return true;
 	};
 
@@ -75,7 +75,7 @@ FiniteTimeAction *Koala::getActionForState(const KoalaState state)
 	case  k_koala_move_left:
 	case  k_koala_move_right:
 		{
-			animation = AnimationCache::getInstance()->getAnimation("koala_move_right");
+			animation = AnimationCache::getInstance()->getAnimation("koala_animation_move_right");
 
 			if (state == k_koala_move_right)
 			{
@@ -94,21 +94,21 @@ FiniteTimeAction *Koala::getActionForState(const KoalaState state)
 	case k_koala_front_turn_left:
 		{
 			_body->setFlippedX(false);
-			animation = AnimationCache::getInstance()->getAnimation("k_koala_front_turn_left");
+			animation = AnimationCache::getInstance()->getAnimation("koala_animation_front_turn_left");
 			return Sequence::create(Spawn::create(Animate::create(animation),this->getCallAction(state),NULL),NULL);
 		}
 		break;
 	case  k_koala_front_turn_right:
 		{
 			_body->setFlippedX(true);
-			animation = AnimationCache::getInstance()->getAnimation("k_koala_front_turn_left");
+			animation = AnimationCache::getInstance()->getAnimation("koala_animation_front_turn_left");
 			return Sequence::create(Spawn::create(Animate::create(animation),this->getCallAction(state),NULL),NULL);
 		}
 		break;
 	case k_koala_back_turn_left:
 		_body->setFlippedX(true);
 		animation = AnimationCache::getInstance()->getAnimation("koala_animation_right_turn_back");
-		return Sequence::create(Spawn::create(Animate::create(animation),this->getCallAction(state),NULL),this->getActionForState(k_koala_back),NULL);
+		return Animate::create(animation);/* Sequence::create(Spawn::create(Animate::create(animation),this->getCallAction(state),NULL),NULL);*/
 		break;
 	case k_koala_back_turn_right:
 		_body->setFlippedX(false);
@@ -122,11 +122,11 @@ FiniteTimeAction *Koala::getActionForState(const KoalaState state)
 		break;
 	case k_koala_left_turn_front:
 		_body->setFlippedX(true);
-		animation = AnimationCache::getInstance()->getAnimation("k_koala_front_turn_left");
+		animation = AnimationCache::getInstance()->getAnimation("koala_animation_front_turn_left");
 		return Spawn::create(Animate::create(animation),this->getCallAction(state),NULL);
 		break;
 	case k_koala_right_turn_front:
-		animation = AnimationCache::getInstance()->getAnimation("k_koala_front_turn_left");
+		animation = AnimationCache::getInstance()->getAnimation("koala_animation_front_turn_left");
 		return Spawn::create(Animate::create(animation)->reverse(),this->getCallAction(state),NULL);
 		break;
 	case k_koala_right_turn_back:

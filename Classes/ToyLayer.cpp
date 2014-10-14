@@ -28,6 +28,10 @@ bool ToyLayer::init()
 	}
 
 	toyPositions = GameConfigure::getInstance()->getToyPosition();
+	koala = Koala::create();
+	this->addChild(koala);
+	koala->setPosition(_winSize/2);
+
 
 	return true;
 }
