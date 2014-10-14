@@ -46,7 +46,7 @@ KoalaState Koala::getState() const
 FiniteTimeAction *Koala::getActionForState(const KoalaState state)
 {
 	Animation *animation = NULL;
-	auto movePos = Vec2(_targetPosition.x-_lastPosition.x,-_originPosition.y+_targetPosition.y);
+	auto movePos = Vec2(_targetPosition.x-_lastPosition.x,-_lastPosition.y+_targetPosition.y);
 	auto durationX = abs(movePos.x) / Koala_Speed;
 	auto durationY = abs(movePos.y)/Koala_Speed;
 	switch (state)
@@ -54,16 +54,19 @@ FiniteTimeAction *Koala::getActionForState(const KoalaState state)
 	case  k_koala_up_ladder:
 	case k_koala_down_ladder:
 		{
-			animation = AnimationCache::getInstance()->getAnimation("koala_animation_up_ladder");
-            auto animate = Animate::create(animation);
-            return Sequence::create(Spawn::create(this->getCallAction(state),MoveBy::create(durationY,Vec2(0,movePos.y)),CallFunc::create([&](){
+			
+            return Sequence::create(Spawn::create(this->getCallAction(state),MoveBy::create(durationY,Vec2(0,movePos.y)),CallFunc::create([=](){
                 //_body->stopAllActions();
+                auto animation = AnimationCache::getInstance()->getAnimation("koala_animation_up_ladder");
+                auto animate = Animate::create(animation);
+                animate->setTag(state);
+
                 _body->runAction(animate);
             }),NULL),
 				this->getActionForState(k_koala_back),
 				
                                     CallFunc::create([=](){
-                _body->stopAction(animate);
+                _body->stopActionByTag(state);
             }), NULL);
 		}
 		break;
@@ -83,7 +86,7 @@ FiniteTimeAction *Koala::getActionForState(const KoalaState state)
 	case  k_koala_move_left:
 	case  k_koala_move_right:
 		{
-			animation = AnimationCache::getInstance()->getAnimation("koala_animation_move_right");
+			
             
             auto internelState = movePos.x<0?k_koala_move_left:k_koala_move_right;
 			if (internelState == k_koala_move_right)
@@ -94,12 +97,14 @@ FiniteTimeAction *Koala::getActionForState(const KoalaState state)
 			{
 				_body->setFlippedX(true);
 			}
-            auto animate = Animate::create(animation);
-            animate->setTag(state);
-
+           
 //			_body ->runAction(Animate::create(animation));
 			auto moveH = MoveBy::create(durationX,Vec2(movePos.x,0));
             return Sequence::create( Spawn::create(CallFunc::create([=](){
+               auto animation = AnimationCache::getInstance()->getAnimation("koala_animation_move_right");
+                auto animate = Animate::create(animation);
+                animate->setTag(state);
+
                 _body->runAction(animate);
             }),moveH,this->getCallAction(internelState),NULL),CallFunc::create([=](){
                 _body->stopActionByTag(state);
@@ -270,11 +275,22 @@ void Koala::move(Vec2 postion)
             moveH = this->getActionForState(k_koala_move_left);
             turn2 = this->getActionForState(k_koala_right_turn_back);
             moveV1 = this->getActionForState(k_koala_up_ladder);
-            _body->runAction(Sequence::create(moveH,turn2,moveV1,CallFunc::create([=](){
+            _body->runAction(Sequence::create(turn1,moveH,turn2,moveV1,CallFunc::create([=](){
                 _isKoalaAimate = false;
             }),NULL));
+        }
+        else
+        {
+            moveV1 = this->getActionForState(k_koala_down_ladder);
+            turn1 = this->getActionForState(k_koala_front_turn_left);
+            moveH = this->getActionForState(k_koala_move_left);
+            moveV2 = this->getActionForState(k_koala_up_ladder);
+            _body->runAction(Sequence::create(moveV1,turn1,moveH,moveV2,CallFunc::create([=](){
+                _isKoalaAimate = false;
+            }),NULL));
+        }
     }
-    }
+    _lastPosition = _targetPosition;
 }
 
 
