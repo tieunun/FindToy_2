@@ -80,10 +80,10 @@ void ToyLayer::putOnToy()
 {
 	auto toy = _putOnToies.back();
 	auto index = _putOnToies.size()-1;
-	toy->setPosition(_koala->getBodyPosition()+Vec2(50,50));
+	toy->setPosition(_koala->getBodyPosition()+Vec2(50,-50));
 	toy->setVisible(true);
 	float duration = _putOnPositions.at(index).distance(_koala->getBodyPosition()+Vec2(50,-50))/Toy_Speed;
-	toy->runAction(Spawn::create(MoveTo::create(duration,_putOnPositions.at(index)),NULL));
+    toy->runAction(Spawn::create(EaseBackIn::create(MoveTo::create(duration,_putOnPositions.at(index))) ,NULL));
 }
 
 void ToyLayer::initPutOnPositions()

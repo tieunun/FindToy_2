@@ -1,5 +1,6 @@
 #pragma once
 #include "BaseToy.h"
+#include "ToyBullet.h"
 class ToyPistol :
 	public BaseToy
 {
@@ -13,5 +14,6 @@ public:
 
 private:
 	bool OnToyTouched(Touch *touch,Event *event);
+    ToyBullet *_bullet;
 };
 

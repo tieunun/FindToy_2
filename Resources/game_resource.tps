@@ -186,6 +186,7 @@
             <filename>toy_dragon.png</filename>
             <filename>toy_harmonica.png</filename>
             <filename>toy_background_9.jpg</filename>
+            <filename>fire.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

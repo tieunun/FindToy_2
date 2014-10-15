@@ -217,10 +217,20 @@ FiniteTimeAction *Koala::getCallAction(KoalaState state)
 void Koala::move(Vec2 postion)
 {
     _targetPosition = postion;
-	if (_targetPosition == _lastPosition)
+	if (_targetPosition == _lastPosition &&_getGift)
 	{
-		return;
+        auto normal = this->getActionForState(k_koala_normal);
+        _body->runAction(Sequence::create(normal,this->getCallAction(k_koala_normal),CallFunc::create([=](){
+            _isKoalaAimate = false;
+            _isFirstMove = false;
+            this->onReachDrawer();
+        }),NULL));
+        return;
 	}
+    else if (_targetPosition == _lastPosition &&!_getGift)
+    {
+        return;
+    }
     else if (_isKoalaAimate)
     {
 		return;

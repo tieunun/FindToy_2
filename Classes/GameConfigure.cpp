@@ -20,13 +20,13 @@ bool GameConfigure::init()
 	_toyPositions.clear();
 	_defaults = UserDefault::getInstance();
     
-    if(_defaults->getBoolForKey(TOY_POSITION))
-    {
+    //if(_defaults->getBoolForKey(TOY_POSITION))
+    //{
         this->changeToyPostion();
         _defaults->setBoolForKey(TOY_POSITION, true);
         _defaults->flush();
         this->convertVec2ToString();
-    }
+   // }
 	return true;
 }
 

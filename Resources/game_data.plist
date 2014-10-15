@@ -126,5 +126,7 @@
 	<string>toy_background_1.jpg</string>
 	<key>toy_background_9</key>
 	<string>toy_background_9.jpg</string>
+	<key>toy_cap_pistol_bullet</key>
+	<string>toy_cap_pistol_bullet.png</string>
 </dict>
 </plist>

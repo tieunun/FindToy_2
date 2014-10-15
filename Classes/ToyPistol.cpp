@@ -18,6 +18,10 @@ void ToyPistol::onEnter()
 	this->addChild(_body);
     this->setContentSize(_body->getContentSize());
     
+    _bullet = ToyBullet::create();
+    this->addChild(_bullet);
+    //_bullet->setPosition(640,360);
+    
     auto listener = EventListenerTouchOneByOne::create();
     listener->setSwallowTouches(true);
     listener->onTouchBegan = CC_CALLBACK_2(ToyPistol::OnToyTouched,this);

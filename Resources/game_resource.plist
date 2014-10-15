@@ -173,6 +173,19 @@
                 <key>sourceSize</key>
                 <string>{170,96}</string>
             </dict>
+            <key>fire.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2006,142},{30,30}}</string>
+                <key>offset</key>
+                <string>{-1,1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{30,30}}</string>
+                <key>sourceSize</key>
+                <string>{32,32}</string>
+            </dict>
             <key>game_background.jpg</key>
             <dict>
                 <key>frame</key>
@@ -508,7 +521,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:041e75358510f68a093f2c2f080c5047:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:c9542081a52698bc4a079f2b98ffadc6:1/1$</string>
             <key>textureFileName</key>
             <string>game_resource.png</string>
         </dict>
