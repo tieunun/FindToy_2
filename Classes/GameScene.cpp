@@ -1,5 +1,6 @@
 
 #include "GameScene.h"
+#include "GameConfigure.h"
 
 #define GAME_RESOURCE_PATH "game_resource.plist"
 
@@ -34,9 +35,11 @@ bool GameScene::init()
 void GameScene::preloadResource()
 {
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile(GAME_RESOURCE_PATH);
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("game_resource_1.plist");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("toy_animation_0.plist");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("toy_animation_1.plist");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("toy_animation_2.plist");
+	GameConfigure::getInstance();
 
 	//animation
 	//pistol
@@ -254,7 +257,7 @@ void GameScene::loadKoalaAnimation()
 	}
 	animation->setDelayPerUnit(.25f);
 	animation->setRestoreOriginalFrame(false);
-	animation->setLoops(0);
+	animation->setLoops(-1);
 	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("koala_animation_down_ladder_gift"));
 
 	//drag ladder
@@ -275,6 +278,35 @@ void GameScene::loadKoalaAnimation()
 	animation->setRestoreOriginalFrame(false);
 	animation->setLoops(0);
 	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("koala_animation_back"));
+
+	//at ladder
+	frame = SpriteFrameCache::getInstance()->getSpriteFrameByName("koala_up_ladder_0.png");
+	animation = Animation::create();
+	animation->addSpriteFrame(frame);
+	animation->setDelayPerUnit(.25f);
+	animation->setRestoreOriginalFrame(false);
+	animation->setLoops(0);
+	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("koala_animation_at_ladder"));
+
+	//normal
+	frame = SpriteFrameCache::getInstance()->getSpriteFrameByName("koala_front_0.png");
+	animation = Animation::create();
+	animation->addSpriteFrame(frame);
+	animation->setDelayPerUnit(.25f);
+	animation->setRestoreOriginalFrame(false);
+	animation->setLoops(0);
+	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("koala_animation_normal"));
+
+	//smile
+	frame = SpriteFrameCache::getInstance()->getSpriteFrameByName("koala_front_0.png");
+	animation = Animation::create();
+	animation->addSpriteFrame(frame);
+	frame = SpriteFrameCache::getInstance()->getSpriteFrameByName("koala_front_1.png");
+	animation->addSpriteFrame(frame);
+	animation->setDelayPerUnit(1.5f);
+	animation->setRestoreOriginalFrame(false);
+	animation->setLoops(-1);
+	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("koala_animation_smile"));
 }
 
 void GameScene::moveKoala(cocos2d::Vec2 position)

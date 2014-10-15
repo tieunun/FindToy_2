@@ -14,6 +14,7 @@ PlayToyPlayLayer *PlayToyPlayLayer::create(ToyType toyType)
 {
 	auto layer = new PlayToyPlayLayer();
 	layer->_type = toyType;
+	layer->init();
 	layer->autorelease();
 	return layer;
 }
@@ -25,13 +26,9 @@ bool PlayToyPlayLayer::init()
 		return false;
 	}
 
-	switch (_type)
-	{
-	case k_toy_harmonica:
-		break;
-	default:
-		break;
-	}
+	_toy = BaseToy::createBig(_type);
+	this->addChild(_toy);
+	_toy->setPosition(_winSize/2);
 
 	return true;
 }

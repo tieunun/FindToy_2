@@ -20,16 +20,13 @@ bool GameConfigure::init()
 	_toyPositions.clear();
 	_defaults = UserDefault::getInstance();
     
-    if(!_defaults->getBoolForKey(TOY_POSITION))
+    if(_defaults->getBoolForKey(TOY_POSITION))
     {
         this->changeToyPostion();
         _defaults->setBoolForKey(TOY_POSITION, true);
         _defaults->flush();
         this->convertVec2ToString();
     }
-
-	this->convertStringToVec2();
-
 	return true;
 }
 
@@ -38,6 +35,7 @@ GameConfigure *GameConfigure::getInstance()
 	if (!instance)
 	{
 		instance = new GameConfigure();
+		instance->init();
 	}
 	return instance;
 }
@@ -80,12 +78,12 @@ std::vector<Vec2> GameConfigure::getToyPosition()
 std::vector<Vec2> GameConfigure::changeToyPostion()
 {
 	auto shelfSize = GAME_DATA_SIZE("shelf_size");
-	std::vector<Vec2> positions;
-	while (positions.size()<=k_toy_count)
+	_toyPositions.clear();
+	while (_toyPositions.size()<k_toy_count)
 	{
 		auto position = Vec2(int(shelfSize.width *CCRANDOM_0_1()),(int)(shelfSize.height*CCRANDOM_0_1()));
 		bool contains = false;
-		for (auto temp : positions)
+		for (auto temp : _toyPositions)
 		{
 			if (temp == position)
 			{
@@ -94,9 +92,8 @@ std::vector<Vec2> GameConfigure::changeToyPostion()
 		}
 		if (!contains)
 		{
-			positions.push_back(position);
+			_toyPositions.push_back(position);
 		}
 	}
-
-	return positions;
+	return _toyPositions;
 }

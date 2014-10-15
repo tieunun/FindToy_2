@@ -25,7 +25,7 @@
 	<key>toy_type_0</key>
 	<string>toy_cap_pistol.png</string>
 	<key>toy_type_1</key>
-	<string>toy_harmonica.png</string>
+	<string>toy_harmonica_s.png</string>
 	<key>toy_type_2</key>
 	<string>toy_frog.png</string>
 	<key>toy_type_3</key>
@@ -49,7 +49,7 @@
 	<key>toy_cap_pistol_animation_count</key>
 	<string>3</string>
 	<key>toy_background_type</key>
-	<string>toy_background_%d.jpg</string>
+	<string>toy_background_%d</string>
 	<key>toy_harmonica</key>
 	<string>toy_harmonica.png</string>
 	<key>harmonica_num</key>
@@ -104,5 +104,27 @@
 	<string>koala_down_ladder_gift_%d.png</string>
 	<key>koala_animation_drag_ladder</key>
 	<string>koala_up_ladder_0.png</string>
+	<key>koala_ladder</key>
+	<string>koala_ladder.png</string>
+	<key>toy_background_0</key>
+	<string>toy_background_1.jpg</string>
+	<key>toy_background_1</key>
+	<string>toy_background_1.jpg</string>
+	<key>toy_background_2</key>
+	<string>toy_background_2.jpg</string>
+	<key>toy_background_3</key>
+	<string>toy_background_1.jpg</string>
+	<key>toy_background_4</key>
+	<string>toy_backgournd_2.jpg</string>
+	<key>toy_background_5</key>
+	<string>toy_background_5.jpg</string>
+	<key>toy_background_6</key>
+	<string>toy_background_1.jpg</string>
+	<key>toy_background_7</key>
+	<string>toy_background_2.jpg</string>
+	<key>toy_background_8</key>
+	<string>toy_background_1.jpg</string>
+	<key>toy_background_9</key>
+	<string>toy_background_9.jpg</string>
 </dict>
 </plist>

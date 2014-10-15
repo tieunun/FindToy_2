@@ -32,5 +32,7 @@ public:
 protected:
 	ToyType _type;
 	Sprite *_body;
+	virtual bool OnToyTouched(Touch *touch,Event *event);
+	bool _toyAnimate;
 };
 

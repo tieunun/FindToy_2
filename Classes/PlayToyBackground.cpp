@@ -31,7 +31,8 @@ bool PlayToyBackground::init()
 
 	auto bgName = GAME_DATA_STRING("toy_background_type");
 	auto bgStr  = StringUtils::format(bgName.c_str(),_type);
-	auto bg = Sprite::createWithSpriteFrameName(bgStr);
+	auto bg_frame_name = GAME_DATA_STRING(bgStr);
+	auto bg = Sprite::createWithSpriteFrameName(bg_frame_name);
 	bg->setPosition(_winSize/2);
 	this->addChild(bg);
 	switch (_type)

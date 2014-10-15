@@ -1,9 +1,12 @@
 #pragma once
 #include "BaseNode.h"
+#include "Ladder.h"
 typedef enum KoalaState
 {
 	k_koala_normal = 0,
 	k_koala_back,
+	k_koala_smile,
+	k_koala_at_ladder,
 	k_koala_move_right,
 	k_koala_front_turn_right,
 	k_koala_front_turn_left,
@@ -30,14 +33,18 @@ public:
 	KoalaState getState() const;
 	void setState(const KoalaState state);
 	void move(Vec2 postion);
+	void onReachDrawer();
+	void moveDownWithGift();
+	Vec2 getBodyPosition();
 	
 	CC_SYNTHESIZE(Vec2,_originPosition,OriginPosition);
     CC_SYNTHESIZE(Vec2,_lastPosition,LastPosition);
-
+	CC_SYNTHESIZE(Ladder*,_ladder,Ladder);
+	CC_SYNTHESIZE(Vec2,_drawerPosition,DrawerPosition);
 
 private:
 	void onAnimationDone();
-	FiniteTimeAction *getActionForState(const KoalaState state);
+	FiniteTimeAction *getActionForState(const KoalaState state,Vec2 movePos=Vec2(0,0));
 	FiniteTimeAction *getCallAction(KoalaState state);
 	FiniteTimeAction *getDoneAction();
 	void updateState();
@@ -46,4 +53,6 @@ private:
 	Vec2 _targetPosition;
 	Vec2 _ladderPosition;
     bool _isKoalaAimate;
+	bool _isFirstMove;
+	bool _getGift;
 };

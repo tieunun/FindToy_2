@@ -12,5 +12,6 @@ public:
 	void play();
 
 private:
+	bool OnToyTouched(Touch *touch,Event *event);
 };
 

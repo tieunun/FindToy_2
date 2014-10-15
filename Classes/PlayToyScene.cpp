@@ -29,5 +29,6 @@ bool PlayToyScene::init()
 	_backgroundLayer = PlayToyBackground::create(_toyType);
 	_playLayer		 = PlayToyPlayLayer::create(_toyType);
 	this->addChild(_backgroundLayer);
+	this->addChild(_playLayer);
 	return true;
 }

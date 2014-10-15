@@ -10,5 +10,5 @@ public:
 	virtual void onEnter();
 	virtual void play();
 private:
-	Sprite *_speeder;
+	bool OnToyTouched(Touch *touch,Event *event);
 };

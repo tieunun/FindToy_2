@@ -22,7 +22,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>toy_animation_2.png</filename>
+        <filename>game_resource_1.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -99,7 +99,7 @@
             <key>packageName</key>
             <string>Texture</string>
             <key>javaFileName</key>
-            <filename>toy_animation_2.java</filename>
+            <filename>game_resource_1.java</filename>
             <key>wrap</key>
             <struct type="AndEngineWrap">
                 <key>s</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>toy_animation_2.plist</filename>
+        <filename>game_resource_1.plist</filename>
         <key>multiPack</key>
         <false/>
         <key>mainExtension</key>
@@ -148,33 +148,7 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>toy_frog_1.png</filename>
-            <filename>toy_frog_2.png</filename>
-            <filename>toy_frog_3.png</filename>
-            <filename>toy_panda_0.png</filename>
-            <filename>toy_panda_body_0.png</filename>
-            <filename>toy_panda_body_1.png</filename>
-            <filename>toy_doll_cloth_b_0.png</filename>
-            <filename>toy_doll_cloth_b_1.png</filename>
-            <filename>toy_doll_cloth_b_2.png</filename>
-            <filename>toy_doll_cloth_b_3.png</filename>
-            <filename>toy_doll_cloth_b_4.png</filename>
-            <filename>toy_doll_cloth_b_5.png</filename>
-            <filename>koala_front_1.png</filename>
-            <filename>koala_front_turn_left_0.png</filename>
-            <filename>koala_front_turn_left_1.png</filename>
-            <filename>koala_move_right_0.png</filename>
-            <filename>koala_move_right_1.png</filename>
-            <filename>koala_right_turn_back_0.png</filename>
-            <filename>koala_right_turn_back_1.png</filename>
-            <filename>koala_up_ladder_0.png</filename>
-            <filename>koala_up_ladder_1.png</filename>
-            <filename>koala_up_ladder_2.png</filename>
-            <filename>koala_front_0.png</filename>
-            <filename>koala_back_0.png</filename>
-            <filename>koala_ladder.png</filename>
-            <filename>koala_down_ladder_gift_0.png</filename>
-            <filename>koala_down_ladder_gift_1.png</filename>
+            <filename>toy_background_2.jpg</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
