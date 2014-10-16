@@ -13,10 +13,8 @@ public:
 	virtual void onEnter();
 	virtual void play();
 	void explode();
-	std::vector<Rect> getHelicopterContentRects();
+
 private:
 	bool onHelicopterTouchBegin(Touch *touch,Event *event);
 	void onHelicopterTouchMove(Touch *touch,Event *event);
-
-	std::vector<Rect> _contentRects;
 };

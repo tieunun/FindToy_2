@@ -5,8 +5,6 @@ ToyHelicopter::ToyHelicopter()
 {
 	_type = ToyType::k_toy_frog;
 	_toyAnimate = false;
-	_contentRects.push_back(Rect(-178,-68,174,136));
-	_contentRects.push_back(Rect(3,4,89,39));
 }
 
 ToyHelicopter::~ToyHelicopter()
@@ -78,7 +76,25 @@ void ToyHelicopter::explode()
 	}),NULL));
 }
 
-std::vector<Rect> ToyHelicopter::getHelicopterContentRects()
-{
-	return _contentRects; 
-}
+//void ToyHelicopter::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags)
+//{
+//    if(_toyAnimate)
+//    {
+//    _customCommand.init(_globalZOrder);
+//    _customCommand.func = CC_CALLBACK_0(ToyHelicopter::onDraw, this, transform, flags);
+//    renderer->addCommand(&_customCommand);
+//    }
+//}
+//
+//void ToyHelicopter::onDraw(const cocos2d::Mat4 &transform, bool transformUpdated)
+//{
+//    Director* director = Director::getInstance();
+//    director->pushMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
+//    director->loadMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW, transform);
+//    glLineWidth( 2.0f );
+//    DrawPrimitives::setDrawColor4B(255,0,0,255);
+//    
+//    DrawPrimitives::drawRect(Vec2(-178,-68),Vec2(-178+174,-68+36));
+//    
+//    director->popMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
+//}

@@ -150,6 +150,11 @@
         <array>
             <filename>toy_background_2.jpg</filename>
             <filename>toy_background_5.jpg</filename>
+            <filename>toy_grabber_10.png</filename>
+            <filename>toy_grabber_9.png</filename>
+            <filename>toy_grabber_8.png</filename>
+            <filename>toy_grabber_7.png</filename>
+            <filename>toy_grabber_6.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

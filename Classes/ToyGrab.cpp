@@ -12,6 +12,9 @@ ToyGrab::~ToyGrab()
 
 void ToyGrab::onEnter()
 {
+    BaseNode::onEnter();
+    
+    _grabber = ToyGrabber::create();
 }
 
 void ToyGrab::play()

@@ -17,7 +17,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        glview = GLViewImpl::create("My Game");
+        glview = GLView::create("My Game");
         director->setOpenGLView(glview);
     }
 
@@ -31,7 +31,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 	auto scene1 = GameScene::create();
     // create a scene. it's an autorelease object
-    auto scene = PlayToyScene::create(k_toy_helicopter);
+    auto scene = PlayToyScene::create(k_toy_grab);
 
     // run
     director->runWithScene(scene);

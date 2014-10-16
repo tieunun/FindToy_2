@@ -46,12 +46,13 @@ bool PlayToyPlayLayer::init()
 		}
 	case k_toy_helicopter:
 		_toy->setPosition(209,489);
-		this->scheduleUpdate();
-		for ( int i = 0;i<12;i++)
-		{
-			auto rect_name = StringUtils::format("toy_helicopter_rect_%d",i);
-			_rects.push_back(GAME_DATA_RECT(rect_name));
-		}
+        for ( int i = 0;i<12;i++)
+        {
+            auto rect_name = StringUtils::format("toy_helicopter_rect_%d",i);
+            _rects.push_back(GAME_DATA_RECT(rect_name));
+            
+            
+        }
 		this->scheduleUpdate();
 		break;
 	default:
@@ -60,6 +61,7 @@ bool PlayToyPlayLayer::init()
 
 	return true;
 }
+
 
 void PlayToyPlayLayer::setType(ToyType var)
 {
@@ -100,15 +102,15 @@ void PlayToyPlayLayer::update(float dt)
 	{
 		for (auto rect :_rects)
 		{
-			auto toy = (ToyHelicopter*)_toy;
-			auto boxes = toy->getHelicopterContentRects();
-			if(rect.intersectsRect(box))
-			{
-				
-				toy->explode();
-				this->unscheduleUpdate();
-			}
-		}
+            if (rect.intersectsRect(Rect(_toy->getPositionX()-48,-68+_toy->getPositionY(), 182,136))) {
+                auto toy = (ToyHelicopter*)_toy;
+                toy->explode();
+                auto scene = (PlayToyScene*)this->getParent();
+                scene->stopBackgroundMove();
+                this->unscheduleUpdate();
+            }
+            
+        }
 	}
 }
 
@@ -125,4 +127,30 @@ void PlayToyPlayLayer::moveHelicopter()
 	_toy->runAction(Sequence::create(move,CallFunc::create([=](){
 		_toy->stopActionByTag(102);
 	}),NULL));
+}
+
+void PlayToyPlayLayer::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags)
+{
+    _customCommand.init(_globalZOrder);
+    _customCommand.func = CC_CALLBACK_0(PlayToyPlayLayer::onDraw, this, transform, flags);
+    renderer->addCommand(&_customCommand);
+   }
+
+void PlayToyPlayLayer::onDraw(const cocos2d::Mat4 &transform, bool transformUpdated)
+{
+    Director* director = Director::getInstance();
+    director->pushMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
+    director->loadMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW, transform);
+    glLineWidth( 2.0f );
+    DrawPrimitives::setDrawColor4B(255,0,0,255);
+    
+//    for(auto rect:_rects)
+//    {
+//        DrawPrimitives::drawRect(rect.origin, rect.origin+rect.size);
+//
+//    }
+//    DrawPrimitives::drawRect(_rects[0].origin, _rects[0].origin+_rects[0].size);
+    DrawPrimitives::drawRect(_toy->getPosition()+Vec2(-48,-68), _toy->getPosition()+Vec2(125,68));
+
+    director->popMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
 }

@@ -157,7 +157,7 @@
 	<key>toy_helicopter_rect_1</key>
 	<string>{{538,0},{100,158}}</string>
 	<key>toy_helicopter_rect_2</key>
-	<string>{{690,362},{162,358}}</string>
+	<string>{{690,402},{162,308}}</string>
 	<key>toy_helicopter_rect_3</key>
 	<string>{{954,0},{110,152}}</string>
 	<key>toy_helicopter_rect_4</key>
@@ -165,18 +165,22 @@
 	<key>toy_helicopter_rect_5</key>
 	<string>{{1292,0},{116,244}}</string>
 	<key>toy_helicopter_rect_6</key>
-	<string>{{1322,472},{114,248}}</string>
+	<string>{{1322,492},{114,248}}</string>
 	<key>toy_helicopter_rect_7</key>
 	<string>{{1510,492},{152,228}}</string>
 	<key>toy_helicopter_rect_8</key>
 	<string>{{1876,0},{158,330}}</string>
 	<key>toy_helicopter_rect_9</key>
-	<string>{{2078,560},{114,160}}</string>
+	<string>{{2078,580},{114,160}}</string>
 	<key>toy_helicopter_rect_10</key>
-	<string>{{2354,368},{98,352}}</string>
+	<string>{{2354,398},{98,352}}</string>
 	<key>toy_helicopter_rect_11</key>
-	<string>{{2656,412},{78,306}}</string>
+	<string>{{2656,432},{78,306}}</string>
 	<key>toy_helicopter_animation_explosion</key>
 	<string>toy_helicopter_explosion_%d.png</string>
+	<key>toy_grab_animation</key>
+	<string>toy_grabber_%d.png</string>
+	<key>toy_grab</key>
+	<string>toy_grab_0.png</string>
 </dict>
 </plist>

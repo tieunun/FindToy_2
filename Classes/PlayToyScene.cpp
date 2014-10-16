@@ -42,3 +42,8 @@ void PlayToyScene::moveHelicopter()
 {
 	_playLayer->moveHelicopter();
 }
+
+void PlayToyScene::stopBackgroundMove()
+{
+    _backgroundLayer->stopAllActions();
+}

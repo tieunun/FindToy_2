@@ -63,7 +63,11 @@ bool PlayToyBackground::init()
 			auto bg4 = Sprite::create("toy_helicopter_block_1.png");
 			bg4->setPosition(1709,559);
 			this->addChild(bg4);
-			
+            for ( int i = 0;i<12;i++)
+            {
+                auto rect_name = StringUtils::format("toy_helicopter_rect_%d",i);
+                _rects.push_back(GAME_DATA_RECT(rect_name));                
+            }
 		}
 		break;
 	default:
@@ -83,4 +87,30 @@ void PlayToyBackground::move()
 		auto scene = (PlayToyScene*)this->getParent();
 		scene->moveHelicopter();
 	}),NULL));
+}
+
+void PlayToyBackground::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags)
+{
+    _customCommand.init(10);
+    _customCommand.func = CC_CALLBACK_0(PlayToyBackground::onDraw, this, transform, flags);
+    renderer->addCommand(&_customCommand);
+}
+
+void PlayToyBackground::onDraw(const cocos2d::Mat4 &transform, bool transformUpdated)
+{
+    Director* director = Director::getInstance();
+    director->pushMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
+    director->loadMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW, transform);
+    glLineWidth( 2.0f );
+    DrawPrimitives::setDrawColor4B(255,0,0,255);
+    
+    for(auto rect:_rects)
+    {
+        DrawPrimitives::drawRect(rect.origin, rect.origin+rect.size);
+        
+    }
+//    DrawPrimitives::drawRect(_rects[0].origin, _rects[0].origin+_rects[0].size);
+//    DrawPrimitives::drawRect(Vec2(-178,68), Vec2(174,36));
+    
+    director->popMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
 }

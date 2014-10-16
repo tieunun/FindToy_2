@@ -185,6 +185,13 @@
             <filename>toy_helicopter_explosion_1.png</filename>
             <filename>toy_helicopter_explosion_2.png</filename>
             <filename>toy_helicopter_explosion_0.png</filename>
+            <filename>toy_grab_0.png</filename>
+            <filename>toy_grabber_0.png</filename>
+            <filename>toy_grabber_1.png</filename>
+            <filename>toy_grabber_2.png</filename>
+            <filename>toy_grabber_3.png</filename>
+            <filename>toy_grabber_4.png</filename>
+            <filename>toy_grabber_5.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

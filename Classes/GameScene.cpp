@@ -207,6 +207,20 @@ void GameScene::preloadResource()
 	animation->setDelayPerUnit(.25f);
 	animation->setLoops(1);
 	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("toy_helicopter_animation_explosion"));
+    
+    //grab
+    name = GAME_DATA_STRING("toy_grab_animation");
+    animation = Animation::create();
+    for (int i = 0;i<11;i++)
+    {
+        auto frame_name = StringUtils::format(name.c_str(),i);
+        auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
+        animation->addSpriteFrame(frame);
+    }
+    animation->setRestoreOriginalFrame(true);
+    animation->setDelayPerUnit(.25f);
+    animation->setLoops(-1);
+    AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("toy_grab_animation"));
 
 	this->loadKoalaAnimation();
 }

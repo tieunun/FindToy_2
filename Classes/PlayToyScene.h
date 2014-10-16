@@ -13,6 +13,7 @@ public:
 	virtual bool init();
 	void moveBackground();
 	void moveHelicopter();
+    void stopBackgroundMove();
 private:
 	ToyType _toyType;
 	PlayToyBackground *_backgroundLayer;
