@@ -10,6 +10,7 @@ public:
 
 	virtual bool init();
 	static PlayToyBackground *create(ToyType toyType);
+	void move();
 private:
 	ToyType _type;
 };

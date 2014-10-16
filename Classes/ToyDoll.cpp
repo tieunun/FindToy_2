@@ -17,6 +17,10 @@ void ToyDoll::onEnter()
 {
 	BaseNode::onEnter();
 
+	auto defaut_name = GAME_DATA_STRING("toy_doll_empty");
+	_body = Sprite::createWithSpriteFrameName(defaut_name);
+	this->addChild(_body);
+
 	auto name = GAME_DATA_STRING("toy_doll_hair_big");
 	for ( int i = 0;i<3;i++)
 	{
@@ -28,18 +32,18 @@ void ToyDoll::onEnter()
 	for ( int i = 0;i<6;i++)
 	{
 		auto frame_name = StringUtils::format(name.c_str(),i);
-		_hairs.pushBack(Sprite::createWithSpriteFrameName(frame_name));
+		_clothes.pushBack(Sprite::createWithSpriteFrameName(frame_name));
 	}
 }
 
 void ToyDoll::play()
 {
-	auto scene = PlayToyScene::create(k_toy_doll);
-	Director::getInstance()->pushScene(scene);
 }
 
-void ToyDoll::changeCloth(int index)
+void ToyDoll::changeHair(int index)
 {
+	auto pos_name = StringUtils::format("toy_doll_hair_pos_%d",index);
+	auto pos = GAME_DATA_POINT(pos_name);
 	if (_hair)
 	{
 		this->removeChild(_hair);
@@ -48,23 +52,27 @@ void ToyDoll::changeCloth(int index)
 	}
 	else
 	{
-
-		_hair = _clothes.at(index);
+		_body->setSpriteFrame(GAME_DATA_STRING("toy_doll_empty"));
+		_hair = _hairs.at(index);
 		this->addChild(_hair,2);
 	}
+	_hair->setPosition(pos);
 }
 
-void ToyDoll::changeHair(int index)
+void ToyDoll::changeCloth(int index)
 {
+	auto pos_name = StringUtils::format("toy_doll_cloth_pos_%d",index);
+	auto pos = GAME_DATA_POINT(pos_name);
 	if (_cloth)
 	{
 		this->removeChild(_cloth);
 		_cloth = _clothes.at(index);
-		this->addChild(_hair,2);
+		this->addChild(_cloth,1);
 	}
 	else
 	{
 		_cloth = _clothes.at(index);
 		this->addChild(_cloth,1);
 	}
+	_cloth->setPosition(pos);
 }

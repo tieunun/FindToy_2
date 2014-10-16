@@ -11,6 +11,8 @@ public:
 	CREATE_FUNC(ToyPistol);
 	virtual void onEnter();
 	void play();
+	void onBulletBack();
+	void onBulletLanch();
 
 private:
 	bool OnToyTouched(Touch *touch,Event *event);

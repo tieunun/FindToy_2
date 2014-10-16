@@ -15,4 +15,5 @@ public:
 private:
 	Vector<Button *>_hairs;
 	Vector<Button *>_clothes;
+	void clothesTouched(Ref *pSender,TouchEventType type);
 };

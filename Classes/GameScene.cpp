@@ -181,6 +181,33 @@ void GameScene::preloadResource()
 	animation->setLoops(10);
 	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("toy_frog_animation"));
 
+	//helicopter
+	name = GAME_DATA_STRING("toy_helicopter_animation");
+	animation = Animation::create();
+	for (int i = 0;i<2;i++)
+	{
+		auto frame_name = StringUtils::format(name.c_str(),i);
+		auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
+		animation->addSpriteFrame(frame);
+	}
+	animation->setRestoreOriginalFrame(true);
+	animation->setDelayPerUnit(.2f);
+	animation->setLoops(-1);
+	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("toy_helicopter_animation"));
+
+	name = GAME_DATA_STRING("toy_helicopter_animation_explosion");
+	animation = Animation::create();
+	for (int i = 0;i<3;i++)
+	{
+		auto frame_name = StringUtils::format(name.c_str(),i);
+		auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
+		animation->addSpriteFrame(frame);
+	}
+	animation->setRestoreOriginalFrame(true);
+	animation->setDelayPerUnit(.25f);
+	animation->setLoops(1);
+	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("toy_helicopter_animation_explosion"));
+
 	this->loadKoalaAnimation();
 }
 

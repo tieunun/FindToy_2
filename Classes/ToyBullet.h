@@ -21,7 +21,7 @@ public:
     void play();
 private:
     bool OnToyTouched(Touch *touch,Event *event);
-    void update(float dt);
+   // void update(float dt);
     
 };
 

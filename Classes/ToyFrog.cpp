@@ -29,7 +29,7 @@ void ToyFrog::play()
 	auto animation = AnimationCache::getInstance()->getAnimation("toy_frog_animation");
 	_body->runAction(Sequence::create(Animate::create(animation),CallFunc::create([=](){
 		_toyAnimate = false;
-	})));
+	}),NULL));
 }
 
 bool ToyFrog::OnToyTouched(Touch *touch,Event *event)

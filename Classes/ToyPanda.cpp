@@ -86,7 +86,7 @@ void ToyPanda::setState(PandaState var)
 			{
 			_body->setVisible(true);
 			_head->setVisible(true);
-			_downPart->setVisible(true);
+			_downPart->setVisible(false);
 			_hand->setVisible(false);
 			auto animation = AnimationCache::getInstance()->getAnimation("toy_panda_animation_smile");
 			_head->runAction(Sequence::create(Animate::create(animation),CallFunc::create(this,callfunc_selector(ToyPanda::onAnimateDone)),NULL));
@@ -117,6 +117,7 @@ void ToyPanda::onAnimateDone()
 	_downPart->setVisible(false);
 	_hand->setVisible(false);
 	_state = k_panda_none;
+	_body->setSpriteFrame(GAME_DATA_STRING("toy_panda"));
 }
 
 bool ToyPanda::onPandaTouched(Touch *touch,Event *event)
@@ -128,7 +129,9 @@ bool ToyPanda::onPandaTouched(Touch *touch,Event *event)
 // 	auto handBox = this->getRectInGL(_hand);
 	auto headBox = _head->getBoundingBox();
 	auto downBox = _downPart->getBoundingBox();
+	downBox = Rect(downBox.origin.x,downBox.origin.y,downBox.size.width-50,downBox.size.height);
 	auto handBox = _hand->getBoundingBox();
+	handBox = Rect(handBox.origin.x,handBox.origin.y,handBox.size.width-200,handBox.size.height-30);
 
 	if (headBox.containsPoint(touchPos))
 	{

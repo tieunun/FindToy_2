@@ -90,6 +90,10 @@
 	<string>toy_doll_cloth_s_%d.png</string>
 	<key>toy_doll_cloth_big</key>
 	<string>toy_doll_cloth_b_%d.png</string>
+	<key>toy_helicopter</key>
+	<string>toy_helicopter_0.png</string>
+	<key>toy_helicopter_animation</key>
+	<string>toy_helicopter_%d.png</string>
 	<key>koala</key>
 	<string>koala_front_0.png</string>
 	<key>koala_animation_front_turn_left</key>
@@ -115,7 +119,7 @@
 	<key>toy_background_3</key>
 	<string>toy_background_1.jpg</string>
 	<key>toy_background_4</key>
-	<string>toy_backgournd_2.jpg</string>
+	<string>toy_background_2.jpg</string>
 	<key>toy_background_5</key>
 	<string>toy_background_5.jpg</string>
 	<key>toy_background_6</key>
@@ -128,5 +132,51 @@
 	<string>toy_background_9.jpg</string>
 	<key>toy_cap_pistol_bullet</key>
 	<string>toy_cap_pistol_bullet.png</string>
+	<key>toy_doll_empty</key>
+	<string>toy_doll_empty.png</string>
+	<key>toy_doll_hair_pos_0</key>
+	<string>{-27,235}</string>
+	<key>toy_doll_hair_pos_1</key>
+	<string>{-24,232}</string>
+	<key>toy_doll_hair_pos_2</key>
+	<string>{-17,232}</string>
+	<key>toy_doll_cloth_pos_0</key>
+	<string>{-14,-54}</string>
+	<key>toy_doll_cloth_pos_1</key>
+	<string>{-12,-44}</string>
+	<key>toy_doll_cloth_pos_2</key>
+	<string>{-23,-32}</string>
+	<key>toy_doll_cloth_pos_3</key>
+	<string>{-22,-38}</string>
+	<key>toy_doll_cloth_pos_4</key>
+	<string>{-20,-36}</string>
+	<key>toy_doll_cloth_pos_5</key>
+	<string>{-21,-28}</string>
+	<key>toy_helicopter_rect_0</key>
+	<string>{{282,0},{88,316}}</string>
+	<key>toy_helicopter_rect_1</key>
+	<string>{{538,0},{100,158}}</string>
+	<key>toy_helicopter_rect_2</key>
+	<string>{{690,362},{162,358}}</string>
+	<key>toy_helicopter_rect_3</key>
+	<string>{{954,0},{110,152}}</string>
+	<key>toy_helicopter_rect_4</key>
+	<string>{{1062,0},{110,232}}</string>
+	<key>toy_helicopter_rect_5</key>
+	<string>{{1292,0},{116,244}}</string>
+	<key>toy_helicopter_rect_6</key>
+	<string>{{1322,472},{114,248}}</string>
+	<key>toy_helicopter_rect_7</key>
+	<string>{{1510,492},{152,228}}</string>
+	<key>toy_helicopter_rect_8</key>
+	<string>{{1876,0},{158,330}}</string>
+	<key>toy_helicopter_rect_9</key>
+	<string>{{2078,560},{114,160}}</string>
+	<key>toy_helicopter_rect_10</key>
+	<string>{{2354,368},{98,352}}</string>
+	<key>toy_helicopter_rect_11</key>
+	<string>{{2656,412},{78,306}}</string>
+	<key>toy_helicopter_animation_explosion</key>
+	<string>toy_helicopter_explosion_%d.png</string>
 </dict>
 </plist>

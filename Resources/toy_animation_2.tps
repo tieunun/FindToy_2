@@ -175,6 +175,16 @@
             <filename>koala_ladder.png</filename>
             <filename>koala_down_ladder_gift_0.png</filename>
             <filename>koala_down_ladder_gift_1.png</filename>
+            <filename>toy_doll_hair_b_2.png</filename>
+            <filename>toy_doll_hair_b_0.png</filename>
+            <filename>toy_doll_hair_b_1.png</filename>
+            <filename>toy_doll_default.png</filename>
+            <filename>toy_doll_empty.png</filename>
+            <filename>toy_helicopter_0.png</filename>
+            <filename>toy_helicopter_1.png</filename>
+            <filename>toy_helicopter_explosion_1.png</filename>
+            <filename>toy_helicopter_explosion_2.png</filename>
+            <filename>toy_helicopter_explosion_0.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

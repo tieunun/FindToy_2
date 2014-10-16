@@ -149,6 +149,7 @@
         <key>fileList</key>
         <array>
             <filename>toy_background_2.jpg</filename>
+            <filename>toy_background_5.jpg</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -20,7 +20,8 @@ void ToyPistol::onEnter()
     
     _bullet = ToyBullet::create();
     this->addChild(_bullet);
-    //_bullet->setPosition(640,360);
+	_bullet->setVisible(false);
+    _bullet->setPosition(0,237);
     
     auto listener = EventListenerTouchOneByOne::create();
     listener->setSwallowTouches(true);
@@ -39,7 +40,7 @@ bool ToyPistol::OnToyTouched(Touch *touch,Event *event)
 	static Rect fire = Rect(-22.5,-43,183,144);
 	if (_toyAnimate)
 	{
-		return true;
+		return false;
 	}
 	auto location = this->convertTouchToNodeSpace(touch);
 	if (fire.containsPoint(location))
@@ -50,6 +51,17 @@ bool ToyPistol::OnToyTouched(Touch *touch,Event *event)
 		}),NULL));
 		_toyAnimate = true;
 	}
-	return true;
+	return false;
+}
+
+void ToyPistol::onBulletBack()
+{
+	_body->setDisplayFrameWithAnimationName("toy_cap_pistol_animation",0);
+}
+
+void ToyPistol::onBulletLanch()
+{
+	_body->setSpriteFrame("toy_cap_pistol_3.png");
+	_bullet->setVisible(true);
 }
 

@@ -6,6 +6,7 @@
 #include "ToyTransformer.h"
 #include "ToyDoll.h"
 #include "ToyPanda.h"
+#include "ToyHelicopter.h"
 
 BaseToy::BaseToy(void)
 {
@@ -53,6 +54,8 @@ BaseToy *BaseToy::createBig(ToyType type)
 	case k_toy_doll:
 		toy = ToyDoll::create();
 		break;
+	case k_toy_helicopter:
+		toy = ToyHelicopter::create();
 	default:
 		break;
 	}
@@ -96,4 +99,11 @@ bool BaseToy::OnToyTouched(Touch *touch,Event *event)
 		Director::getInstance()->pushScene(secen);
 	}
 	return false;
+}
+
+Rect BaseToy::getBox()
+{
+	static auto offset = 10;
+	auto size = _body->getContentSize();
+	return Rect(this->getPositionX()-size.width/2+offset,this->getPositionY()-size.height/2+offset,size.width-offset,size.height-offset);
 }

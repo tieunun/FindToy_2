@@ -11,6 +11,8 @@ public:
 
 	static PlayToyScene *create(ToyType toyType);
 	virtual bool init();
+	void moveBackground();
+	void moveHelicopter();
 private:
 	ToyType _toyType;
 	PlayToyBackground *_backgroundLayer;

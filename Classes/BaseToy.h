@@ -28,11 +28,12 @@ public:
 
 	static BaseToy *create(ToyType type);
 	static BaseToy *createBig(ToyType type);
+	CC_SYNTHESIZE(bool,_toyAnimate,ToyAnimate);
+	Rect getBox();
 
 protected:
 	ToyType _type;
 	Sprite *_body;
 	virtual bool OnToyTouched(Touch *touch,Event *event);
-	bool _toyAnimate;
 };
 

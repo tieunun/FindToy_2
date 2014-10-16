@@ -7,11 +7,24 @@
             <key>toy_background_2.jpg</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{1280,720}}</string>
+                <string>{{1284,2},{1280,720}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{1280,720}}</string>
+                <key>sourceSize</key>
+                <string>{1280,720}</string>
+            </dict>
+            <key>toy_background_5.jpg</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,2},{1280,720}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{1280,720}}</string>
                 <key>sourceSize</key>
@@ -25,9 +38,9 @@
             <key>realTextureFileName</key>
             <string>game_resource_1.png</string>
             <key>size</key>
-            <string>{1024,2048}</string>
+            <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:3ec533b418107b4adbdbb4f110196be7:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:7b7823d03be3421309342bed7b463d45:1/1$</string>
             <key>textureFileName</key>
             <string>game_resource_1.png</string>
         </dict>

@@ -32,3 +32,13 @@ bool PlayToyScene::init()
 	this->addChild(_playLayer);
 	return true;
 }
+
+void PlayToyScene::moveBackground()
+{
+	_backgroundLayer->move();
+}
+
+void PlayToyScene::moveHelicopter()
+{
+	_playLayer->moveHelicopter();
+}
