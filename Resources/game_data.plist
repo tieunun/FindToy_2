@@ -182,5 +182,19 @@
 	<string>toy_grabber_%d.png</string>
 	<key>toy_grab</key>
 	<string>toy_grab_0.png</string>
+	<key>toy_grabber</key>
+	<string>toy_grabber_0.png</string>
+	<key>toy_dragon_animation_fly</key>
+	<string>toy_dragon_%d.png</string>
+	<key>toy_dragon_animation_eruption</key>
+	<string>toy_dragon_eruption_%d.png</string>
+	<key>toy_chick_animation</key>
+	<string>toy_chick_%d.png</string>
+	<key>common_back_btn_nor</key>
+	<string>common_back_btn_nor.png</string>
+	<key>common_back_btn_sel</key>
+	<string>common_back_btn_sel.png</string>
+	<key>toy_holder</key>
+	<string>toy_holder.png</string>
 </dict>
 </plist>

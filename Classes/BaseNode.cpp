@@ -3,6 +3,7 @@
 
 BaseNode::BaseNode(void)
 {
+	_onEnterCount = 0;
 }
 
 
@@ -12,6 +13,7 @@ BaseNode::~BaseNode(void)
 
 void BaseNode::onEnter()
 {
+	_onEnterCount++;
 	Node::onEnter();
 }
 

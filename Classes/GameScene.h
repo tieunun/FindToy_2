@@ -15,6 +15,7 @@ public:
 
 	void preloadResource();
     void moveKoala(Vec2 position);
+	void setDrawerShouldTouch(bool touch);
 
 private:
 

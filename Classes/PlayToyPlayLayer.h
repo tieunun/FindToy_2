@@ -10,7 +10,6 @@ public:
 
 	virtual bool init();
 	static PlayToyPlayLayer *create(ToyType toyType);
-	CC_PROPERTY(ToyType,_type,Type);
 	void changeCloth(int index);
 	void changeHair(int index);
 	void onHelicopterReachCenter();

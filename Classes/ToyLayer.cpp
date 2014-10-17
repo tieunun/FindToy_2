@@ -1,6 +1,7 @@
 #include "ToyLayer.h"
 #include "GameConfigure.h"
 #include "Ladder.h"
+#include "GameScene.h"
 #define  Toy_Speed 300.0f;
 
 ToyLayer::ToyLayer()
@@ -42,6 +43,10 @@ bool ToyLayer::init()
 		toy->setVisible(false);
 	}
 
+	_popToy = PopToy::create();
+	this->addChild(_popToy);
+	_popToy->setVisible(false);
+
 	return true;
 }
 
@@ -55,6 +60,7 @@ void ToyLayer::moveKoala(cocos2d::Vec2 position)
 
 void ToyLayer::checkAnyToyInPosition(Vec2 position)
 {
+	//index is the toy type
 	int index = 0;
 	//find if the position in toyPosition variable
 	for (auto item : _toyPositions)
@@ -66,13 +72,40 @@ void ToyLayer::checkAnyToyInPosition(Vec2 position)
 		index++;
 	}
 
+	_popToy->setPosition(Vec2(349,274)+Vec2(186*position.x,113*position.y));
 	if (index != _toyPositions.size())
 	{
-		//to do,if the position has been found
+		//if the position has been found
+		//_popToy->setPosition();
+		_popToy->setVisible(true);
+		_popToy->setOpacity(128);
+		if (_popToy->isPoped(position))
+		{
+			_popToy->popToy((ToyType)-1);
+		}
+		else
+		{	
+			_popToy->popToy((ToyType)index);
+			//here we find it,put it on screen
+			auto scene = (GameScene*)this->getParent();
+			scene->setDrawerShouldTouch(false);
+			this->runAction(Sequence::create(DelayTime::create(2),
+				CallFunc::create([=](){
+					_putOnToies.pushBack(_toies.at(index));
+					_koala->moveDownWithGift();
+			}),
+				CallFunc::create([=](){
 
-		//here we find it,put it on screen
-		_putOnToies.pushBack(_toies.at(index));
-		_koala->moveDownWithGift();
+					auto scene = (GameScene*)this->getParent();
+					scene->setDrawerShouldTouch(true);
+			})
+				,NULL
+				));
+		}
+	}
+	else
+	{
+		_popToy->popToy((ToyType)-1);
 	}
 }
 
@@ -83,7 +116,13 @@ void ToyLayer::putOnToy()
 	toy->setPosition(_koala->getBodyPosition()+Vec2(50,-50));
 	toy->setVisible(true);
 	float duration = _putOnPositions.at(index).distance(_koala->getBodyPosition()+Vec2(50,-50))/Toy_Speed;
-    toy->runAction(Spawn::create(EaseBackIn::create(MoveTo::create(duration,_putOnPositions.at(index))) ,NULL));
+    //toy->runAction();
+	toy->runAction(Sequence::create(Spawn::create(EaseBackIn::create(MoveTo::create(duration,_putOnPositions.at(index))) ,NULL),
+		CallFunc::create([=]()
+	{
+		Director::getInstance()->getEventDispatcher()->setEnabled(true);
+	}),NULL
+		));
 }
 
 void ToyLayer::initPutOnPositions()
@@ -94,4 +133,10 @@ void ToyLayer::initPutOnPositions()
 	{
 		_putOnPositions.push_back(Vec2(offset+width*(i+1),offset + 70));
 	}
+}
+
+void ToyLayer::setShouldDrawerTouched(bool touched)
+{
+	auto scene = (GameScene*)this->getParent();
+	scene->setDrawerShouldTouch(touched);
 }

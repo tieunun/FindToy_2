@@ -12,5 +12,6 @@ public:
 	virtual void onEnter();
 protected:
 	Rect getRectInGL(Node *node);
+	int _onEnterCount;
 };
 

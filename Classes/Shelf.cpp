@@ -14,7 +14,10 @@ Shelf::~Shelf()
 void Shelf::onEnter()
 {
 	BaseNode::onEnter();
-	
+	if (_onEnterCount >1)
+	{
+		return;
+	}
 	auto str = GAME_DATA_STRING("shelf");
 	_body = Sprite::createWithSpriteFrameName(GAME_DATA_STRING("shelf"));
 	this->addChild(_body);

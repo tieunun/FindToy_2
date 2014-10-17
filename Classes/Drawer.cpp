@@ -16,6 +16,10 @@ void Drawer::onEnter()
 {
 	BaseNode::onEnter();
 
+	if (_onEnterCount >1)
+	{
+		return;
+	}
 	auto nor = GAME_DATA_STRING("drawer_nor");
 	auto sel = GAME_DATA_STRING("drawer_sel");
 	//auto body = MenuItemSprite::create(Sprite::createWithSpriteFrameName(nor),Sprite::createWithSpriteFrameName(sel),CC_CALLBACK_0(Drawer::onDrawerTouched,this));

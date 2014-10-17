@@ -218,9 +218,50 @@ void GameScene::preloadResource()
         animation->addSpriteFrame(frame);
     }
     animation->setRestoreOriginalFrame(true);
-    animation->setDelayPerUnit(.25f);
+    animation->setDelayPerUnit(.1f);
     animation->setLoops(-1);
     AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("toy_grab_animation"));
+
+	//dragon
+	name = GAME_DATA_STRING("toy_dragon_animation_fly");
+	animation = Animation::create();
+	for (int i = 0;i<7;i++)
+	{
+		auto frame_name = StringUtils::format(name.c_str(),i);
+		auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
+		animation->addSpriteFrame(frame);
+	}
+	animation->setRestoreOriginalFrame(true);
+	animation->setDelayPerUnit(.1f);
+	animation->setLoops(-1);
+	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("toy_dragon_animation_fly"));
+
+	name = GAME_DATA_STRING("toy_dragon_animation_eruption");
+	animation = Animation::create();
+	for (int i = 0;i<7;i++)
+	{
+		auto frame_name = StringUtils::format(name.c_str(),i);
+		auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
+		animation->addSpriteFrame(frame);
+	}
+	animation->setRestoreOriginalFrame(true);
+	animation->setDelayPerUnit(.1f);
+	animation->setLoops(2);
+	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("toy_dragon_animation_eruption"));
+
+	//chick
+	name = GAME_DATA_STRING("toy_chick_animation");
+	animation = Animation::create();
+	for (int i = 0;i<2;i++)
+	{
+		auto frame_name = StringUtils::format(name.c_str(),i);
+		auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
+		animation->addSpriteFrame(frame);
+	}
+	animation->setRestoreOriginalFrame(true);
+	animation->setDelayPerUnit(.2f);
+	animation->setLoops(-1);
+	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("toy_chick_animation"));
 
 	this->loadKoalaAnimation();
 }
@@ -353,6 +394,11 @@ void GameScene::loadKoalaAnimation()
 void GameScene::moveKoala(cocos2d::Vec2 position)
 {
     _toyLayer->moveKoala(position);
+}
+
+void GameScene::setDrawerShouldTouch(bool touch)
+{
+	_staticLayer->setShouldDrawerTouched(touch);
 }
 
 

@@ -7,6 +7,9 @@
 #include "ToyDoll.h"
 #include "ToyPanda.h"
 #include "ToyHelicopter.h"
+#include "ToyGrab.h"
+#include "ToyDragon.h"
+#include "ToyChick.h"
 
 BaseToy::BaseToy(void)
 {
@@ -56,6 +59,15 @@ BaseToy *BaseToy::createBig(ToyType type)
 		break;
 	case k_toy_helicopter:
 		toy = ToyHelicopter::create();
+		break;
+	case k_toy_grab:
+		toy = ToyGrab::create();
+		break;
+	case k_toy_dragon:
+		toy = ToyDragon::create();
+		break;
+	case k_toy_chick:
+		toy = ToyChick::create();
 	default:
 		break;
 	}
@@ -65,7 +77,10 @@ BaseToy *BaseToy::createBig(ToyType type)
 void BaseToy::onEnter()
 {
 	BaseNode::onEnter();
-	
+	if (_onEnterCount >1)
+	{
+		return;
+	}
 	_body = Sprite::createWithSpriteFrameName(GAME_DATA_STRING(StringUtils::format("toy_type_%d",_type)));
 
 	auto listener = EventListenerTouchOneByOne::create();
@@ -106,4 +121,24 @@ Rect BaseToy::getBox()
 	static auto offset = 10;
 	auto size = _body->getContentSize();
 	return Rect(this->getPositionX()-size.width/2+offset,this->getPositionY()-size.height/2+offset,size.width-offset,size.height-offset);
+}
+
+void BaseToy::setToyOpacity(int opacity)
+{
+	_body->setOpacity(opacity);
+}
+
+Action *BaseToy::createFadeOutAction(bool fadeOut)
+{
+	if (fadeOut)
+	{
+		_body->setOpacity(0);
+		return _body->runAction(FadeIn::create(1));
+	}
+	else
+	{
+		_body->setOpacity(255);
+		return _body->runAction(FadeOut::create(1));
+	}
+	
 }

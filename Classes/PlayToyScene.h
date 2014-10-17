@@ -2,6 +2,7 @@
 #include "BaseToy.h"
 #include "PlayToyBackground.h"
 #include "PlayToyPlayLayer.h"
+#include "PlayToyPannelLayer.h"
 
 class PlayToyScene :public BaseScene
 {
@@ -15,7 +16,9 @@ public:
 	void moveHelicopter();
     void stopBackgroundMove();
 private:
+	void preLoadAudioAndEffect();
 	ToyType _toyType;
 	PlayToyBackground *_backgroundLayer;
 	PlayToyPlayLayer  *_playLayer;
+	PlayToyPannelLayer *_pannelLayer;
 };

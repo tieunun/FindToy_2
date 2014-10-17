@@ -155,6 +155,20 @@
             <filename>toy_grabber_8.png</filename>
             <filename>toy_grabber_7.png</filename>
             <filename>toy_grabber_6.png</filename>
+            <filename>toy_dragon_3.png</filename>
+            <filename>toy_dragon_4.png</filename>
+            <filename>toy_dragon_5.png</filename>
+            <filename>toy_dragon_6.png</filename>
+            <filename>toy_dragon_0.png</filename>
+            <filename>toy_dragon_1.png</filename>
+            <filename>toy_dragon_2.png</filename>
+            <filename>toy_dragon_eruption_1.png</filename>
+            <filename>toy_dragon_eruption_2.png</filename>
+            <filename>toy_dragon_eruption_3.png</filename>
+            <filename>toy_dragon_eruption_4.png</filename>
+            <filename>toy_dragon_eruption_5.png</filename>
+            <filename>toy_dragon_eruption_6.png</filename>
+            <filename>toy_dragon_eruption_0.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -22,18 +22,11 @@ void Koala::onEnter()
 {
 	BaseNode::onEnter();
 
-	_body = Sprite::createWithSpriteFrameName(GAME_DATA_STRING("koala"));
-	this->addChild(_body);
-
-//	auto listener = EventListenerTouchOneByOne::create();
-//	listener->setSwallowTouches(true);
-//	listener->onTouchBegan = [=](Touch *touch,Event *event)->bool
-//	{
-//		_body->runAction(this->getActionForState(k_koala_front_turn_right));
-//		return true;
-//	};
-//
-//	this->_eventDispatcher->addEventListenerWithSceneGraphPriority(listener,this);
+	if (_onEnterCount<=1)
+	{
+		_body = Sprite::createWithSpriteFrameName(GAME_DATA_STRING("koala"));
+		this->addChild(_body);
+	}
 }
 
 void Koala::setState(const KoalaState state)
@@ -224,11 +217,14 @@ void Koala::move(Vec2 postion)
             _isKoalaAimate = false;
             _isFirstMove = false;
             this->onReachDrawer();
+
         }),NULL));
         return;
 	}
     else if (_targetPosition == _lastPosition &&!_getGift)
     {
+		auto layer = (ToyLayer*)this->getParent();
+		layer->checkAnyToyInPosition(_drawerPosition);
         return;
     }
     else if (_isKoalaAimate)
@@ -435,6 +431,7 @@ void Koala::onReachDrawer()
 	{
 		auto layer = (ToyLayer*)this->getParent();
 		layer->checkAnyToyInPosition(_drawerPosition);
+		//Director::getInstance()->getEventDispatcher()->setEnabled(true);
 	}
 	else
 	{

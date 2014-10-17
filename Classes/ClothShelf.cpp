@@ -17,6 +17,10 @@ void ClothShelf::onEnter()
 {
 	BaseNode::onEnter();
 
+	if (_onEnterCount >1)
+	{
+		return;
+	}
 	auto name = GAME_DATA_STRING("toy_doll_hair_small");
 	for ( int i = 0;i<3;i++)
 	{

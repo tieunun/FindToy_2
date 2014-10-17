@@ -9,7 +9,7 @@ public:
 
 	CREATE_FUNC(GameStaticLayer);
 	virtual bool init();
-    
+    CC_SYNTHESIZE(bool,_shouldDrawerTouched,ShouldDrawerTouched);
     void onDrawerTouched(Vec2 position);
     bool abcdefg(Touch *touch, Event *unusedEvent);
 };

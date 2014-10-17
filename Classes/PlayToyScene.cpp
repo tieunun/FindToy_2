@@ -26,10 +26,13 @@ bool PlayToyScene::init()
 		return false;
 	}
 
+
 	_backgroundLayer = PlayToyBackground::create(_toyType);
 	_playLayer		 = PlayToyPlayLayer::create(_toyType);
+	_pannelLayer	 = PlayToyPannelLayer::create(_toyType);
 	this->addChild(_backgroundLayer);
 	this->addChild(_playLayer);
+	this->addChild(_pannelLayer);
 	return true;
 }
 

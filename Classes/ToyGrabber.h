@@ -19,6 +19,7 @@ public:
     virtual void onEnter();
     CREATE_FUNC(ToyGrabber);
     virtual void play();
+	void setGrabberFlippedX(bool flipped);
 };
 
 #endif /* defined(__FindToy__ToyGrabber__) */

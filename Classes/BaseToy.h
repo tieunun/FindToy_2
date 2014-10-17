@@ -30,6 +30,8 @@ public:
 	static BaseToy *createBig(ToyType type);
 	CC_SYNTHESIZE(bool,_toyAnimate,ToyAnimate);
 	Rect getBox();
+	virtual void setToyOpacity(int opticy);
+	virtual Action* createFadeOutAction(bool fadeOut);
 
 protected:
 	ToyType _type;

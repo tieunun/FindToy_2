@@ -187,6 +187,11 @@
             <filename>toy_harmonica.png</filename>
             <filename>toy_background_9.jpg</filename>
             <filename>fire.png</filename>
+            <filename>toy_chick_0.png</filename>
+            <filename>toy_chick_1.png</filename>
+            <filename>common_back_btn_sel.png</filename>
+            <filename>common_back_btn_nor.png</filename>
+            <filename>toy_holder.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

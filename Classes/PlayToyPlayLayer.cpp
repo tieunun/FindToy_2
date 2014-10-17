@@ -3,6 +3,7 @@
 #include "ToyDoll.h"
 #include "ToyHelicopter.h"
 #include "PlayToyScene.h"
+#include "ToyDragon.h"
 
 PlayToyPlayLayer::PlayToyPlayLayer()
 {
@@ -50,10 +51,12 @@ bool PlayToyPlayLayer::init()
         {
             auto rect_name = StringUtils::format("toy_helicopter_rect_%d",i);
             _rects.push_back(GAME_DATA_RECT(rect_name));
-            
-            
+  
         }
 		this->scheduleUpdate();
+		break;
+	case k_toy_chick:
+		_toy->setPosition(982,237);
 		break;
 	default:
 		break;
@@ -63,26 +66,26 @@ bool PlayToyPlayLayer::init()
 }
 
 
-void PlayToyPlayLayer::setType(ToyType var)
-{
-	if (!_toy)
-	{
-		log("Toy is null ,can not be set type");
-		return;
-	}
-
-	if (var!= _type)
-	{
-		this->removeChildByTag(_type,true);
-		_toy = BaseToy::createBig(_type);
-		this->addChild(_toy,0,_type);
-	}
-}
-
-ToyType PlayToyPlayLayer::getType()
-{
-	return _type;
-}
+// void PlayToyPlayLayer::setType(ToyType var)
+// {
+// 	if (!_toy)
+// 	{
+// 		log("Toy is null ,can not be set type");
+// 		return;
+// 	}
+// 
+// 	if (var!= _type)
+// 	{
+// 		this->removeChildByTag(_type,true);
+// 		_toy = BaseToy::createBig(_type);
+// 		this->addChild(_toy,0,_type);
+// 	}
+// }
+// 
+// ToyType PlayToyPlayLayer::getType()
+// {
+// 	return _type;
+// }
 
 void PlayToyPlayLayer::changeCloth(int index)
 {
