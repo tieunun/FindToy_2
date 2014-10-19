@@ -1,3 +1,4 @@
+#pragma once
 #include "BaseNode.h"
 #include "Drawer.h"
 
@@ -10,6 +11,7 @@ public:
 	CREATE_FUNC(Shelf);
 	virtual void onEnter();
     void onDrawerTouched(Vec2 position);
+    void openDrawer(Vec2 position);
 
 private:
 	Sprite *_body;

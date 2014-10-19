@@ -1,5 +1,6 @@
 #pragma once
-#include "BaseNode.h"
+
+#include "BaseToy.h"
 #include "ui/UIWidget.h"
 
 class Drawer :
@@ -15,5 +16,6 @@ public:
 	//virtual void init()
 	void onDrawerTouched(Ref *pSender,ui::TouchEventType type);
     CC_SYNTHESIZE(Vec2, _drawerPosition, DrawerPosition);
+    CC_SYNTHESIZE(ToyType, _toyType, ToyType);
 };
 

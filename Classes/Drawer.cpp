@@ -5,6 +5,7 @@ using namespace cocos2d::ui;
 
 Drawer::Drawer(void)
 {
+    _toyType = (ToyType)-1;
 }
 
 

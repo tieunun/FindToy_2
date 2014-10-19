@@ -142,3 +142,8 @@ Action *BaseToy::createFadeOutAction(bool fadeOut)
 	}
 	
 }
+
+Sprite *BaseToy::getBody() const
+{
+    return _body;
+}

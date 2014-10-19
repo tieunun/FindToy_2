@@ -21,7 +21,7 @@
 	<key>desk</key>
 	<string>desk.png</string>
 	<key>desk_position</key>
-	<string>{.2266,.3569}</string>
+	<string>{.2266,.3169}</string>
 	<key>toy_type_0</key>
 	<string>toy_cap_pistol.png</string>
 	<key>toy_type_1</key>
@@ -196,5 +196,37 @@
 	<string>common_back_btn_sel.png</string>
 	<key>toy_holder</key>
 	<string>toy_holder.png</string>
+	<key>koala_position_0</key>
+	<string>{605,182}</string>
+	<key>koala_position_1</key>
+	<string>{785,182}</string>
+	<key>koala_position_2</key>
+	<string>{965,182}</string>
+	<key>koala_position_3</key>
+	<string>{1145,182}</string>
+	<key>koala_position_4</key>
+	<string>{605,295}</string>
+	<key>koala_position_5</key>
+	<string>{785,295}</string>
+	<key>koala_position_6</key>
+	<string>{965,295}</string>
+	<key>koala_position_7</key>
+	<string>{1145,295}</string>
+	<key>koala_position_8</key>
+	<string>{605,408}</string>
+	<key>koala_position_9</key>
+	<string>{785,408}</string>
+	<key>koala_position_10</key>
+	<string>{965,408}</string>
+	<key>koala_position_11</key>
+	<string>{1145,408}</string>
+	<key>koala_position_12</key>
+	<string>{605,521}</string>
+	<key>koala_position_13</key>
+	<string>{785,521}</string>
+	<key>koala_position_14</key>
+	<string>{965,521}</string>
+	<key>koala_position_15</key>
+	<string>{1145,521}</string>
 </dict>
 </plist>

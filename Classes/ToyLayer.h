@@ -2,7 +2,7 @@
 #include "BaseLayer.h"
 #include "BaseToy.h"
 #include "Koala.h"
-#include "PopToy.h"
+#include "Koala_.h"
 class ToyLayer :
 	public BaseLayer
 {
@@ -16,6 +16,9 @@ public:
 	void checkAnyToyInPosition(Vec2 position);
 	void putOnToy();
 	void setShouldDrawerTouched(bool touched);
+    
+    void openDrawer(Vec2 position);
+    void handInToy(ToyType type);
 private:
 
 	void initPutOnPositions();
@@ -23,7 +26,6 @@ private:
 	Vector<BaseToy*> _putOnToies;
 	std::vector<Vec2> _putOnPositions;
 	std::vector<Vec2> _toyPositions;
-	Koala *_koala;
-	PopToy *_popToy;
+	Koala_ *_koala;
 };
 

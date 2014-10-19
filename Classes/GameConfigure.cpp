@@ -81,7 +81,7 @@ std::vector<Vec2> GameConfigure::changeToyPostion()
 	_toyPositions.clear();
 	while (_toyPositions.size()<k_toy_count)
 	{
-		auto position = Vec2(int(shelfSize.width *CCRANDOM_0_1()),(int)(shelfSize.height*CCRANDOM_0_1()));
+		auto position = Vec2((int)(shelfSize.width *CCRANDOM_0_1()),(int)(shelfSize.height*CCRANDOM_0_1()));
 		bool contains = false;
 		for (auto temp : _toyPositions)
 		{

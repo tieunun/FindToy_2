@@ -8,7 +8,7 @@ class BaseNode :
 public:
 	BaseNode(void);
 	virtual ~BaseNode(void);
-
+    CREATE_FUNC(BaseNode);
 	virtual void onEnter();
 protected:
 	Rect getRectInGL(Node *node);

@@ -1,6 +1,6 @@
 #include "Shelf.h"
 #include "GameStaticLayer.h"
-
+#include "GameConfigure.h"
 Shelf::Shelf()
 {
 
@@ -40,7 +40,7 @@ void Shelf::onEnter()
 				xOffset +=2;
 			}
 			auto drawer = Drawer::create();
-            drawer->setDrawerPosition(Vec2(j,i));
+            drawer->setDrawerPosition(Vec2(j,i));           //set up the relative position in shelf like (1,1),(0,1)
 			drawer->setPosition(startPos+Vec2(drawerSize.width*j,drawerSize.height*i)+Vec2(xOffset,yOffset));
 			_body->addChild(drawer);
 			_drawers.pushBack(drawer);
@@ -50,10 +50,26 @@ void Shelf::onEnter()
 		xOffset = 0;
 		yOffset +=.5f;
 	}
+    
+    auto toyPos = GameConfigure::getInstance()->getToyPosition();
+    int index = 0;
+    for(auto pos : toyPos)
+    {
+        auto drawer = _drawers.at(pos.x+pos.y*4);
+        drawer->setToyType((ToyType)index++);
+    }
 }
 
 void Shelf::onDrawerTouched(cocos2d::Vec2 position)
 {
     auto layer = (GameStaticLayer *)this->getParent();
     layer->onDrawerTouched(position);
+}
+
+void Shelf::openDrawer(Vec2 position)
+{
+    auto drawer = _drawers.at(position.x+position.y*4);
+    auto type = drawer->getToyType();
+    auto layer = (GameStaticLayer *)this->getParent();
+    layer->PopToy(type);
 }

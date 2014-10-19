@@ -401,4 +401,13 @@ void GameScene::setDrawerShouldTouch(bool touch)
 	_staticLayer->setShouldDrawerTouched(touch);
 }
 
+void GameScene::openDrawer(cocos2d::Vec2 position)
+{
+    _staticLayer->openDrawer(position);
+}
+
+void GameScene::handInToy(ToyType type)
+{
+    _toyLayer->handInToy(type);
+}
 

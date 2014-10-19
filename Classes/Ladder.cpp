@@ -2,7 +2,7 @@
 
 Ladder::Ladder()
 {
-
+    _ladderPos = 0;
 }
 
 Ladder::~Ladder()

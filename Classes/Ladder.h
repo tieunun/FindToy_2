@@ -8,4 +8,5 @@ public:
 	~Ladder();
 	CREATE_FUNC(Ladder);
 	virtual void onEnter();
+    CC_SYNTHESIZE(int, _ladderPos, LadderPos);
 };

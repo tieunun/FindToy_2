@@ -32,6 +32,7 @@ public:
 	Rect getBox();
 	virtual void setToyOpacity(int opticy);
 	virtual Action* createFadeOutAction(bool fadeOut);
+    Sprite *getBody() const;
 
 protected:
 	ToyType _type;

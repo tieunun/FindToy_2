@@ -14,7 +14,11 @@ public:
 	CREATE_FUNC(GameScene);
 
 	void preloadResource();
-    void moveKoala(Vec2 position);
+    
+    void moveKoala(Vec2 position);              //automatic find the way
+    void openDrawer(Vec2 position);
+    void handInToy(ToyType type);
+    
 	void setDrawerShouldTouch(bool touch);
 
 private:

@@ -40,15 +40,18 @@ bool PopToy::isPoped(Vec2 popPos)
 
 void PopToy::popToy(ToyType type)
 {
+    this->stopAllActions();
+    _body->stopAllActions();
 	this->setVisible(true);
+    _body->setOpacity(0);
 	this->removeChildByTag(105);
 		auto delay = DelayTime::create(1);
 		this->runAction(Sequence::create(CallFunc::create([=]
 		{
-			if (type > 0 && type<k_toy_count)
+			if (type >= 0 && type<k_toy_count)
 			{
 				auto toy = _toies.at(type);
-				this->addChild(toy,105);
+				this->addChild(toy, 1, 105);
 				toy->createFadeOutAction(true);
 			}	
 			_body->setOpacity(0);
@@ -58,7 +61,7 @@ void PopToy::popToy(ToyType type)
 			delay
 			,CallFunc::create([=]
 		{
-			if (type > 0 && type < k_toy_count)
+			if (type >= 0 && type < k_toy_count)
 			{
 				auto toy = _toies.at(type);
 				toy->createFadeOutAction(false);
@@ -68,9 +71,5 @@ void PopToy::popToy(ToyType type)
 		}
 		),CallFunc::create([=]
 		{
-			if (type<0 || type>=k_toy_count)
-			{
-				Director::getInstance()->getEventDispatcher()->setEnabled(true);
-			}
 		}),NULL));
 }
