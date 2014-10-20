@@ -43,10 +43,10 @@ bool Buyer::init()
 	_body = Sprite::createWithSpriteFrameName(frame_name);
 	this->addChild(_body);
 
-	_sign = BuySign::create();
-	this->addChild(_sign);
-	_sign->setVisible(false);
-	_sign->setPosition(20,200);
+	_buySign = BuySign::create();
+	this->addChild(_buySign);
+	_buySign->setVisible(false);
+	_buySign->setPosition(20,200);
 	return true;
 }
 
@@ -59,7 +59,9 @@ void Buyer::buy()
 	auto move = MoveTo::create(this->getPosition().distance(buyPos)/Buyer_Speed,buyPos);
 	this->runAction(Sequence::create(move,CallFunc::create([=](){
 		_body->stopAllActions();
-
+        std::string buyers[] = {"monkey","rabbit","sheep","pig"};
+        auto frame_name = StringUtils::format("buyer_%s_2.png",buyers[_buyerType].c_str());
+        _body->setSpriteFrame(frame_name);
 		ToyType toy;
 		while (true)
 		{
@@ -86,7 +88,7 @@ void Buyer::buy()
 			}
 		}
 
-		_sign->setToy(toy);
+		_buySign->setToy(toy);
 		_buyedToies.push_back(toy);
 	}),NULL));
 }

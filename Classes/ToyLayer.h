@@ -3,7 +3,6 @@
 #include "BaseToy.h"
 #include "Koala.h"
 #include "Koala_.h"
-#include "Buyer.h"
 class ToyLayer :
 	public BaseLayer
 {
@@ -32,6 +31,5 @@ private:
 
 	Vector<BaseToy*> _toies;
 	Koala_ *_koala;
-	Buyer  *_buyer;
 };
 

@@ -46,3 +46,8 @@ void BuySign::setToy(ToyType type)
 	auto toy = this->getToy();
 	toy->setVisible(true);
 }
+
+ToyType BuySign::getToyType()
+{
+    return _type;
+}

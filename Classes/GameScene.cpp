@@ -278,6 +278,7 @@ void GameScene::preloadResource()
 
 	this->loadBuyerAnimation();
 	this->loadKoalaAnimation();
+    this->loadAudio();
 }
 
 void GameScene::loadKoalaAnimation()
@@ -432,7 +433,9 @@ void GameScene::loadBuyerAnimation()
 		for (int j = 0 ;j<3;j++)
 		{
 			auto name = StringUtils::format(frame_name,buyer_names[i].c_str(),j);
-			animation->addSpriteFrameWithFile(name);
+            auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(name);
+            animation->addSpriteFrame(frame);
+//            animation->addSpriteFrameWithFile(name);
 		}
 		animation->setDelayPerUnit(.25f);
 		animation->setRestoreOriginalFrame(true);

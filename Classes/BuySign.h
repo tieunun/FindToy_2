@@ -11,6 +11,7 @@ public:
 	virtual bool init();
 	void setToy(ToyType type);
 	Sprite *getToy();
+    ToyType getToyType();
 
 private:
 	Sprite *_frame;

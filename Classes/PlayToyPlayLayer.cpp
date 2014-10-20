@@ -147,7 +147,7 @@ void PlayToyPlayLayer::onDraw(const cocos2d::Mat4 &transform, bool transformUpda
     glLineWidth( 2.0f );
     DrawPrimitives::setDrawColor4B(255,0,0,255);
     
-    DrawPrimitives::drawRect(_toy->getPosition()+Vec2(-48,-68), _toy->getPosition()+Vec2(125,68));
+    //DrawPrimitives::drawRect(_toy->getPosition()+Vec2(-48,-68), _toy->getPosition()+Vec2(125,68));
 
     director->popMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
 }

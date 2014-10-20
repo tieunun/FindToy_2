@@ -13,7 +13,8 @@ public:
 	void changeCloth(int index);
 private:
 	Vector<Sprite*> _hairs;
-	Vector<Sprite*> _clothes;
+	Vector<ProgressTimer*> _clothes;
 	Sprite *_hair;
-	Sprite *_cloth;
+	ProgressTimer *_cloth;
+    ParticleSystemQuad *_emitter;
 };

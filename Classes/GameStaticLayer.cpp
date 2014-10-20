@@ -37,6 +37,9 @@ bool GameStaticLayer::init()
 	desk->setPosition(this->getPositionInWinSize(deskPos));
 	this->addChild(desk);
     
+    _buyer = Buyer::create();
+    this->addChild(_buyer);
+    
     _popToy = PopToy::create();
     _popToy->setVisible(false);
     this->addChild(_popToy);
@@ -44,6 +47,20 @@ bool GameStaticLayer::init()
 	return true;
 }
 
+void GameStaticLayer::onEnter()
+{
+    BaseLayer::onEnter();
+    _buyer->setPosition(-100,203);
+    _buyer->buy();
+    
+}
+
+void GameStaticLayer::onExit()
+{
+    BaseLayer::onExit();
+    _buyer->getBuySign()->setVisible(false);
+    _buyer->setBuyerType((BuyerType)((_buyer->getBuyerType()+1)%k_buyer_count));
+}
 
 void GameStaticLayer::onDrawerTouched(cocos2d::Vec2 position)
 {
@@ -60,10 +77,22 @@ void GameStaticLayer::openDrawer(Vec2 position)
 void GameStaticLayer::PopToy(ToyType type)
 {
     _popToy->popToy(type);
-    if(type>=0 && type<k_toy_count)
+//    if(type>=0 && type<k_toy_count)
+//    {
+//        auto scene = (GameScene*)this->getParent();
+//        scene->handInToy(type);
+//    }
+    auto buyerBuyToye = _buyer->getBuySign()->getToyType();
+    if (buyerBuyToye != type) {
+        
+    }
+    else
     {
-        auto scene = (GameScene*)this->getParent();
-        scene->handInToy(type);
+        Director::getInstance()->getEventDispatcher()->setEnabled(false);
+        this->runAction(Sequence::create(DelayTime::create(2.0f),CallFunc::create([=](){
+            auto scene = (GameScene*)this->getParent();
+            scene->handInToy(type);
+        }), NULL));
     }
 }
 

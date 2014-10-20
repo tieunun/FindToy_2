@@ -21,10 +21,10 @@ public:
 	static Buyer *create(BuyerType type);
 	CC_SYNTHESIZE(Sprite*,_body,Body);
 	CC_SYNTHESIZE(BuyerType,_buyerType,BuyerType);
+    CC_SYNTHESIZE(BuySign*, _buySign, BuySign);
 
 	void buy();
 	void leave();
 private:
 	std::vector<ToyType> _buyedToies;
-	BuySign *_sign;
 };

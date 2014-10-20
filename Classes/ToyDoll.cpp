@@ -6,6 +6,7 @@ ToyDoll::ToyDoll()
 	_type = ToyType::k_toy_frog;
 	_hair = NULL;
 	_cloth = NULL;
+    _toyAnimate = false;
 }
 
 ToyDoll::~ToyDoll()
@@ -17,6 +18,11 @@ void ToyDoll::onEnter()
 {
 	BaseNode::onEnter();
 
+    _emitter = ParticleSystemQuad::create("change_cloth.plist");
+    _emitter->setPosition(-60,190);
+    this->addChild(_emitter);
+    _emitter->setVisible(false);
+    
 	auto defaut_name = GAME_DATA_STRING("toy_doll_empty");
 	_body = Sprite::createWithSpriteFrameName(defaut_name);
 	this->addChild(_body);
@@ -32,8 +38,14 @@ void ToyDoll::onEnter()
 	for ( int i = 0;i<6;i++)
 	{
 		auto frame_name = StringUtils::format(name.c_str(),i);
-		_clothes.pushBack(Sprite::createWithSpriteFrameName(frame_name));
+        auto progress = ProgressTimer::create(Sprite::createWithSpriteFrameName(frame_name));
+        progress->setMidpoint(Vec2(0,1));
+        progress->setBarChangeRate(Vec2(0,1));
+        progress->setPercentage(0);
+        progress->setType(ProgressTimer::Type::BAR);
+		_clothes.pushBack(progress);
 	}
+
 }
 
 void ToyDoll::play()
@@ -61,18 +73,52 @@ void ToyDoll::changeHair(int index)
 
 void ToyDoll::changeCloth(int index)
 {
+    if (_toyAnimate) {
+        return;
+    }
+    _toyAnimate = true;
 	auto pos_name = StringUtils::format("toy_doll_cloth_pos_%d",index);
+    auto progressTo1 = ProgressTo::create(1, 100);
+
+    _emitter->setVisible(true);
 	auto pos = GAME_DATA_POINT(pos_name);
 	if (_cloth)
 	{
-		this->removeChild(_cloth);
-		_cloth = _clothes.at(index);
-		this->addChild(_cloth,1);
+        if (_cloth == _clothes.at(index))
+        {
+            return;
+        }
+//		this->removeChild(_cloth);
+//		_cloth = _clothes.at(index);
+//		this->addChild(_cloth,1);
+
+        auto cloth = _clothes.at(index);
+        cloth->setPosition(pos);
+        cloth->setLocalZOrder(_cloth->getLocalZOrder()+1);
+        this->addChild(cloth);
+        auto progressTo2 = ProgressTo::create(1, 0);
+        _cloth->setMidpoint(Vec2(0,0));
+        _cloth->runAction(progressTo2);
+        cloth->runAction(Sequence::create(progressTo1,CallFunc::create([=](){
+            _cloth->setPercentage(0);
+            this->removeChild(_cloth);
+            _cloth->setMidpoint(Vec2(0,1));
+            _cloth = cloth;
+            _toyAnimate = false;
+        }), NULL));
 	}
 	else
 	{
 		_cloth = _clothes.at(index);
 		this->addChild(_cloth,1);
+        _cloth->runAction(progressTo1);
+        _cloth->setPosition(pos);
+
 	}
-	_cloth->setPosition(pos);
+    _emitter->runAction(Sequence::create(MoveBy::create(1, Vec2(0,-462)),CallFunc::create([=](){
+        _emitter->setPosition(-60,190);
+        _emitter->setVisible(false);
+        _toyAnimate = false;
+    }),NULL));
+
 }
