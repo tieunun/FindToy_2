@@ -41,6 +41,7 @@ bool ToyGrab::onGrabTouched(Touch *touch,Event *event)
 
 void ToyGrab::play()
 {
+	SimpleAudioEngine::getInstance()->playEffect("toy_grab_run.mp3",true);
 	auto winSize = Director::getInstance()->getWinSize();
 	auto move1 = MoveBy::create((winSize.width/2+300)/Toy_Grab_Speed,Vec2(-winSize.width/2-300,0));
 	auto move2 = MoveBy::create((winSize.width+600)/Toy_Grab_Speed,Vec2(winSize.width+600,0));
@@ -57,6 +58,7 @@ void ToyGrab::play()
 		move3,
 		CallFunc::create([=](){
 			_toyAnimate = false;
+			SimpleAudioEngine::getInstance()->stopAllEffects();
 	}),
 		NULL
 		));

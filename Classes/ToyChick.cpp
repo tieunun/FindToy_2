@@ -15,6 +15,7 @@ void ToyChick::onEnter()
 {
 	BaseNode::onEnter();
 
+	SimpleAudioEngine::getInstance()->playEffect("toy_chick_water.mp3",true);
 	_body = Sprite::create();
 	_body->setAnchorPoint(Vec2(.5f,.1f));
 	this->addChild(_body);
@@ -45,6 +46,7 @@ bool ToyChick::onChickTouched(Touch *touch,Event *event)
 		auto move = MoveBy::create(location2.distance(Vec2(0,0))/Toy_Chick_Speed,location2);
 		move->setTag(104);
 		this->runAction(move);
+		SimpleAudioEngine::getInstance()->playEffect("toy_chick_quack.mp3");
 	}
 	return true;
 }

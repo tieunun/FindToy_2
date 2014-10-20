@@ -100,6 +100,8 @@
 	<string>koala_front_turn_left_%d.png</string>
 	<key>koala_animation_move_right</key>
 	<string>koala_move_right_%d.png</string>
+	<key>koala_animation_move_left_gift</key>
+	<string>koala_move_left_gift_%d.png</string>
 	<key>koala_animation_right_turn_back</key>
 	<string>koala_right_turn_back_%d.png</string>
 	<key>koala_animation_up_ladder</key>
@@ -228,5 +230,7 @@
 	<string>{965,521}</string>
 	<key>koala_position_15</key>
 	<string>{1145,521}</string>
+	<key>buy_frame</key>
+	<string>buy_frame.png</string>
 </dict>
 </plist>

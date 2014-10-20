@@ -14,6 +14,8 @@
 Koala_::Koala_()
 {
     _state = nullptr;
+	_isFindToy = false;
+	_isFindLadder = false;
     _targetPos = Vec2(0,0);
     _originPos = Vec2(0,0);
     for (int i = 0; i < 16; i++) {
@@ -165,19 +167,28 @@ void Koala_::moveInternel()
 
 void Koala_::openDrawer()
 {
-    auto layer = (ToyLayer*)this->getParent();
-    int index = 0;
-    for (auto item : _reachablePositions) {
-        if (item == _targetPos) {
-            break;
-        }
-        index++;
-    }
-    layer->openDrawer(Vec2(index%4,index/4));
+	auto layer = (ToyLayer*)this->getParent();
+	if (_isFindToy)
+	{
+		_isFindToy = false;
+		layer->handIn(_handInToy);
+	}
+	else
+	{
+		int index = 0;
+		for (auto item : _reachablePositions) {
+			if (item == _targetPos) {
+				break;
+			}
+			index++;
+		}
+		layer->openDrawer(Vec2(index%4,index/4));
+	}
 }
 
 void Koala_::handInToy(ToyType type)
 {
+	_handInToy = type;
     _targetPos = _originPos;
     _isFindToy = true;
     this->moveInternel();

@@ -169,6 +169,21 @@
             <filename>toy_dragon_eruption_5.png</filename>
             <filename>toy_dragon_eruption_6.png</filename>
             <filename>toy_dragon_eruption_0.png</filename>
+            <filename>koala_move_left_gift_1.png</filename>
+            <filename>koala_move_left_gift_0.png</filename>
+            <filename>buyer_monkey_2.png</filename>
+            <filename>buyer_monkey_0.png</filename>
+            <filename>buyer_monkey_1.png</filename>
+            <filename>buyer_rabbit_1.png</filename>
+            <filename>buyer_rabbit_2.png</filename>
+            <filename>buyer_rabbit_0.png</filename>
+            <filename>buyer_sheep_0.png</filename>
+            <filename>buyer_sheep_1.png</filename>
+            <filename>buyer_sheep_2.png</filename>
+            <filename>buyer_pig_2.png</filename>
+            <filename>buyer_pig_0.png</filename>
+            <filename>buyer_pig_1.png</filename>
+            <filename>buy_frame.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

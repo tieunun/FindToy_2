@@ -1,4 +1,6 @@
 #include "PlayToyScene.h"
+#include "SimpleAudioEngine.h"
+using namespace CocosDenshion;
 
 PlayToyScene::PlayToyScene()
 {
@@ -49,4 +51,101 @@ void PlayToyScene::moveHelicopter()
 void PlayToyScene::stopBackgroundMove()
 {
     _backgroundLayer->stopAllActions();
+}
+
+void PlayToyScene::onEnter()
+{
+	BaseScene::onEnter();
+	auto auido = SimpleAudioEngine::getInstance();
+	switch (_toyType)
+	{
+	case k_toy_cap_pistol:
+		auido->preloadEffect("cap_pistol_fire.mp3");
+		auido->preloadEffect("cap_pistol_bullet_fire.mp3");
+		break;
+	case k_toy_harmonica:
+		for (int i = 0;i<9;i++)
+		{
+			auido->preloadEffect(StringUtils::format("toy_harmonica_play_%d.mp3",i).c_str());
+		}
+		break;
+	case k_toy_frog:
+		auido->preloadEffect("toy_frog_croak.mp3");
+		break;
+	case k_toy_transformer:
+		auido->preloadEffect("toy_transformer_fire.mp3");
+		break;
+	case k_toy_panda:
+		auido->preloadEffect("toy_pander_cry.mp3");
+		auido->preloadEffect("toy_pander_eat.mp3");
+		auido->preloadEffect("toy_pander_tickle.mp3");
+		break;
+	case k_toy_doll:
+		auido->preloadEffect("toy_doll_cloth_click.mp3");
+		break;
+	case k_toy_helicopter:
+		auido->preloadEffect("toy_helicopter_boom.mp3");
+		auido->preloadEffect("toy_helicopter_flying.mp3");
+		break;
+	case k_toy_grab:
+		auido->preloadEffect("toy_grab_run.mp3");
+		break;
+	case k_toy_dragon:
+		auido->preloadEffect("toy_dragon_explode.mp3");
+		break;
+	case k_toy_chick:
+		auido->preloadEffect("toy_chick_water.mp3");
+		auido->preloadEffect("toy_chick_quack.mp3");
+		break;
+	default:
+		break;
+	}
+}
+
+void PlayToyScene::onExit()
+{
+	BaseScene::onExit();
+	auto auido = SimpleAudioEngine::getInstance();
+	switch (_toyType)
+	{
+	case k_toy_cap_pistol:
+		auido->unloadEffect("cap_pistol_fire.mp3");
+		auido->unloadEffect("cap_pistol_bullet_fire.mp3");
+		break;
+	case k_toy_harmonica:
+		for (int i = 0;i<9;i++)
+		{
+			auido->unloadEffect(StringUtils::format("toy_harmonica_play_%d.mp3",i).c_str());
+		}
+	case k_toy_frog:
+		auido->unloadEffect("toy_frog_croak.mp3");
+		break;
+	case k_toy_transformer:
+		auido->unloadEffect("toy_transformer_fire.mp3");
+		break;
+	case k_toy_panda:
+		auido->unloadEffect("toy_pander_cry.mp3");
+		auido->unloadEffect("toy_pander_eat.mp3");
+		auido->unloadEffect("toy_pander_tickle.mp3");
+		break;
+	case k_toy_doll:
+		auido->unloadEffect("toy_doll_cloth_click.mp3");
+		break;
+	case k_toy_helicopter:
+		auido->unloadEffect("toy_helicopter_boom.mp3");
+		auido->unloadEffect("toy_helicopter_flying.mp3");
+		break;
+	case k_toy_grab:
+		auido->unloadEffect("toy_grab_run.mp3");
+		break;
+	case k_toy_dragon:
+		auido->unloadEffect("toy_dragon_explode.mp3");
+		break;
+	case k_toy_chick:
+		auido->unloadEffect("toy_chick_water.mp3");
+		auido->unloadEffect("toy_chick_quack.mp3");
+		break;
+	default:
+		break;
+	}
 }

@@ -41,6 +41,7 @@ private:
     void                moveInternel();
     std::vector<Vec2>   _reachablePositions;
     KoalaState_         *_state;
+	ToyType				_handInToy;
 };
 
 #endif /* defined(__FindToy__Koala___) */

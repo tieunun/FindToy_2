@@ -1,7 +1,8 @@
 
 #include "GameScene.h"
 #include "GameConfigure.h"
-
+#include "SimpleAudioEngine.h"
+using namespace CocosDenshion;
 #define GAME_RESOURCE_PATH "game_resource.plist"
 
 	GameScene::GameScene(void)
@@ -32,6 +33,18 @@ bool GameScene::init()
 	return true;
 }
 
+void GameScene::onEnter()
+{
+	BaseScene::onEnter();
+	SimpleAudioEngine::getInstance()->playBackgroundMusic("main_game_background.mp3",true);
+}
+
+void GameScene::onExit()
+{
+	BaseScene::onExit();
+	SimpleAudioEngine::getInstance()->stopBackgroundMusic(false);
+}
+
 void GameScene::preloadResource()
 {
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile(GAME_RESOURCE_PATH);
@@ -53,7 +66,7 @@ void GameScene::preloadResource()
         animation->addSpriteFrame(frame);
     }
     animation->setDelayPerUnit(.2f);
-    animation->setLoops(10);
+    animation->setLoops(8);
     animation->setRestoreOriginalFrame(true);
     AnimationCache::getInstance()->addAnimation(animation, "toy_cap_pistol_animation");
 
@@ -100,7 +113,7 @@ void GameScene::preloadResource()
 		animation->addSpriteFrame(frame);
 	}
 	animation->setRestoreOriginalFrame(true);
-	animation->setLoops(10);
+	animation->setLoops(7);
 	animation->setDelayPerUnit(.2f);
 	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("toy_panda_animation_tickle"));
 	//cry
@@ -113,7 +126,7 @@ void GameScene::preloadResource()
 		animation->addSpriteFrame(frame);
 	}
 	animation->setRestoreOriginalFrame(true);
-	animation->setLoops(10);
+	animation->setLoops(7);
 	animation->setDelayPerUnit(.2f);
 	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("toy_panda_animation_cry"));
 
@@ -139,8 +152,8 @@ void GameScene::preloadResource()
 		animation->addSpriteFrame(frame);
 	}
 	animation->setRestoreOriginalFrame(true);
-	animation->setLoops(10);
-	animation->setDelayPerUnit(.2f);
+	animation->setLoops(7);
+	animation->setDelayPerUnit(.25f);
 	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("toy_panda_animation_head_eat"));
 
 	name = GAME_DATA_STRING("toy_panda_animation_hand_eat");
@@ -263,6 +276,7 @@ void GameScene::preloadResource()
 	animation->setLoops(-1);
 	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("toy_chick_animation"));
 
+	this->loadBuyerAnimation();
 	this->loadKoalaAnimation();
 }
 
@@ -389,6 +403,47 @@ void GameScene::loadKoalaAnimation()
 	animation->setRestoreOriginalFrame(false);
 	animation->setLoops(-1);
 	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("koala_animation_smile"));
+
+	//move right with gift
+	name = GAME_DATA_STRING("koala_animation_move_left_gift");
+	animation = Animation::create();
+	for (int i = 0;i<2;i++)
+	{
+		auto frame_name = StringUtils::format(name.c_str(),i);
+		auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
+		animation->addSpriteFrame(frame);
+	}
+	animation->setDelayPerUnit(.25f);
+	animation->setRestoreOriginalFrame(false);
+	animation->setLoops(-1);
+	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("koala_animation_move_left_gift"));
+
+
+}
+
+void GameScene::loadBuyerAnimation()
+{
+	char *frame_name = "buyer_%s_%d.png";
+	std::string buyer_names[] = {"monkey","rabbit","sheep","pig"};
+	char *anim_name = "buyer_animation_%d";
+	for (int i = 0;i<4;i++)
+	{
+		auto animation = Animation::create();
+		for (int j = 0 ;j<3;j++)
+		{
+			auto name = StringUtils::format(frame_name,buyer_names[i].c_str(),j);
+			animation->addSpriteFrameWithFile(name);
+		}
+		animation->setDelayPerUnit(.25f);
+		animation->setRestoreOriginalFrame(true);
+		animation->setLoops(-1);
+		AnimationCache::getInstance()->addAnimation(animation,StringUtils::format(anim_name,i));
+	}
+}
+
+void GameScene::loadAudio()
+{
+	SimpleAudioEngine::getInstance()->preloadBackgroundMusic("main_game_background.mp3");
 }
 
 void GameScene::moveKoala(cocos2d::Vec2 position)

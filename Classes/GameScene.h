@@ -18,12 +18,15 @@ public:
     void moveKoala(Vec2 position);              //automatic find the way
     void openDrawer(Vec2 position);
     void handInToy(ToyType type);
-    
+    virtual void onEnter();
+	virtual void onExit();
 	void setDrawerShouldTouch(bool touch);
 
 private:
 
 	void loadKoalaAnimation();
+	void loadAudio();
+	void loadBuyerAnimation();
 	GameMainBackground *_background;
 	GameStaticLayer    *_staticLayer;
     ToyLayer           *_toyLayer;

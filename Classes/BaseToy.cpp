@@ -83,10 +83,10 @@ void BaseToy::onEnter()
 	}
 	_body = Sprite::createWithSpriteFrameName(GAME_DATA_STRING(StringUtils::format("toy_type_%d",_type)));
 
-	auto listener = EventListenerTouchOneByOne::create();
-	listener->setSwallowTouches(true);
-	listener->onTouchBegan = CC_CALLBACK_2(BaseToy::OnToyTouched,this);
-	this->_eventDispatcher->addEventListenerWithSceneGraphPriority(listener,this);
+// 	auto listener = EventListenerTouchOneByOne::create();
+// 	listener->setSwallowTouches(true);
+// 	listener->onTouchBegan = CC_CALLBACK_2(BaseToy::OnToyTouched,this);
+// 	this->_eventDispatcher->addEventListenerWithSceneGraphPriority(listener,this);
 	this->addChild(_body);
 }
 

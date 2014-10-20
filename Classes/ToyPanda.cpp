@@ -55,6 +55,7 @@ void ToyPanda::setState(PandaState var)
 {
 	if (this->_state != var)
 	{
+		SimpleAudioEngine::getInstance()->stopAllEffects();
 		for (auto item :this->getChildren())
 		{
 			item->stopAllActions();
@@ -64,6 +65,7 @@ void ToyPanda::setState(PandaState var)
 		{
 		case k_panda_tickle:
 			{
+				SimpleAudioEngine::getInstance()->playEffect("toy_pander_tickle.mp3",true);
 			_body->setVisible(true);
 			_downPart->setVisible(false);
 			_hand->setVisible(false);
@@ -74,6 +76,7 @@ void ToyPanda::setState(PandaState var)
 			break;
 		case  k_panda_cry:
 			{
+				SimpleAudioEngine::getInstance()->playEffect("toy_pander_cry.mp3",true);
 			_body->setVisible(true);
 			_downPart->setVisible(false);
 			_hand->setVisible(false);
@@ -94,6 +97,8 @@ void ToyPanda::setState(PandaState var)
 			break;
 		case k_panda_eat:
 			{
+				SimpleAudioEngine::getInstance()->playEffect("toy_pander_eat.mp3",true);
+
 			_body->setVisible(false);
 			_head->setVisible(true);
 			_downPart->setVisible(true);
@@ -118,6 +123,7 @@ void ToyPanda::onAnimateDone()
 	_hand->setVisible(false);
 	_state = k_panda_none;
 	_body->setSpriteFrame(GAME_DATA_STRING("toy_panda"));
+	SimpleAudioEngine::getInstance()->stopAllEffects();
 }
 
 bool ToyPanda::onPandaTouched(Touch *touch,Event *event)

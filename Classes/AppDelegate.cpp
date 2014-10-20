@@ -12,12 +12,13 @@ AppDelegate::~AppDelegate()
 {
 }
 
+
 bool AppDelegate::applicationDidFinishLaunching() {
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        glview = GLView::create("My Game");
+        glview = GLViewImpl::create("My Game");
         director->setOpenGLView(glview);
     }
 
@@ -30,8 +31,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
 
 	auto scene1 = GameScene::create();
-    // create a scene. it's an autorelease object
-    //auto scene = PlayToyScene::create(k_toy_chick);
+     //create a scene. it's an autorelease object
+   // auto scene = PlayToyScene::create(k_toy_chick);
 
     // run
     director->runWithScene(scene1);

@@ -45,6 +45,7 @@ bool PlayToyPlayLayer::init()
 
 			_toy->setPosition(987,381);
 		}
+		break;
 	case k_toy_helicopter:
 		_toy->setPosition(209,489);
         for ( int i = 0;i<12;i++)
@@ -111,8 +112,7 @@ void PlayToyPlayLayer::update(float dt)
                 auto scene = (PlayToyScene*)this->getParent();
                 scene->stopBackgroundMove();
                 this->unscheduleUpdate();
-            }
-            
+            }   
         }
 	}
 }
@@ -147,12 +147,6 @@ void PlayToyPlayLayer::onDraw(const cocos2d::Mat4 &transform, bool transformUpda
     glLineWidth( 2.0f );
     DrawPrimitives::setDrawColor4B(255,0,0,255);
     
-//    for(auto rect:_rects)
-//    {
-//        DrawPrimitives::drawRect(rect.origin, rect.origin+rect.size);
-//
-//    }
-//    DrawPrimitives::drawRect(_rects[0].origin, _rects[0].origin+_rects[0].size);
     DrawPrimitives::drawRect(_toy->getPosition()+Vec2(-48,-68), _toy->getPosition()+Vec2(125,68));
 
     director->popMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);

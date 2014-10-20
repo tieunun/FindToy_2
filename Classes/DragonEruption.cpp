@@ -21,6 +21,7 @@ void DragonEruption::onEnter()
 
 void DragonEruption::play()
 {
+	SimpleAudioEngine::getInstance()->playEffect("toy_dragon_explode.mp3");
 	auto animation = AnimationCache::getInstance()->getAnimation("toy_dragon_animation_eruption");
 	_body->runAction(Sequence::create(CallFunc::create([=](){
 		_toyAnimate = true;

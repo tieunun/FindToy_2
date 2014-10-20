@@ -26,9 +26,11 @@ void ToyFrog::onEnter()
 
 void ToyFrog::play()
 {
+	auto effectID = SimpleAudioEngine::getInstance()->playEffect("toy_frog_croak.mp3",true);
 	auto animation = AnimationCache::getInstance()->getAnimation("toy_frog_animation");
 	_body->runAction(Sequence::create(Animate::create(animation),CallFunc::create([=](){
 		_toyAnimate = false;
+		SimpleAudioEngine::getInstance()->stopEffect(effectID);
 	}),NULL));
 }
 

@@ -50,12 +50,14 @@ void ClothShelf::onEnter()
 
 void ClothShelf::clothesTouched(Ref *pSender,TouchEventType type)
 {
-	Button* butten = (Button*)pSender;  
+	Button* butten = (Button*)pSender;
 	unsigned int tag = butten->getTag();  
 	switch (type)  
 	{  
 	case TOUCH_EVENT_BEGAN:  
 		{
+			SimpleAudioEngine::getInstance()->playEffect("toy_doll_cloth_click.mp3");
+			butten->setScale(1.1f);
 			auto layer = (PlayToyPlayLayer*)this->getParent();
 			if (tag >3)
 			{
@@ -67,7 +69,12 @@ void ClothShelf::clothesTouched(Ref *pSender,TouchEventType type)
 			}
 		}
 		break;  
-
+	case TOUCH_EVENT_ENDED:
+		butten->setScale(1);
+		break;
+	case TOUCH_EVENT_CANCELED:
+		butten->setScale(1);
+		break;
 	default:  
 		break;  
 	}  

@@ -16,6 +16,7 @@ void ToyHelicopter::onEnter()
 {
 	BaseNode::onEnter();
 
+	SimpleAudioEngine::getInstance()->playEffect("toy_helicopter_flying.mp3",true);
 	auto name = GAME_DATA_STRING("toy_helicopter");
 	_body = Sprite::createWithSpriteFrameName(name);
 	this->addChild(_body);
@@ -68,6 +69,8 @@ void ToyHelicopter::onHelicopterTouchMove(Touch *touch,Event *event)
 
 void ToyHelicopter::explode()
 {
+	SimpleAudioEngine::getInstance()->stopAllEffects();
+	SimpleAudioEngine::getInstance()->playEffect("toy_helicopter_boom.mp3");
 	_body->stopAllActions();
 	this->stopAllActions();
 	auto animation = AnimationCache::getInstance()->getAnimation("toy_helicopter_animation_explosion");

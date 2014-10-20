@@ -24,7 +24,10 @@ void ToyHarmonica::onEnter()
 		auto temp = std::string(GAME_DATA_STRING("harmonica_num"));
 		auto nor = StringUtils::format(temp.c_str(),i);
 		//auto keyboardNum = MenuItemImage::create(nor,nor,CC_CALLBACK_1(,this));
-		auto item = MenuItemSprite::create(Sprite::createWithSpriteFrameName(nor),Sprite::createWithSpriteFrameName(nor),CC_CALLBACK_1(ToyHarmonica::onHarmonnicaTouched,this));
+		auto nor_sprite = Sprite::createWithSpriteFrameName(nor);
+		auto sel_sprite = Sprite::createWithSpriteFrameName(nor);
+		sel_sprite->setScale(1.05f);
+		auto item = MenuItemSprite::create(nor_sprite,sel_sprite,CC_CALLBACK_1(ToyHarmonica::onHarmonnicaTouched,this));
 		item->setTag(1000+i);
 		items.pushBack(item);
 	}
@@ -44,12 +47,7 @@ void ToyHarmonica::onHarmonnicaTouched(Ref *pSender)
 {
 	auto item = (MenuItemSprite*)pSender;
 	auto type = item->getTag() - 1000;
-	switch (type)
-	{
-	case 0:
+	auto name = StringUtils::format("toy_harmonica_play_%d.mp3",type);
 
-		break;
-	default:
-		break;
-	}
+	SimpleAudioEngine::getInstance()->playEffect(name.c_str());
 }

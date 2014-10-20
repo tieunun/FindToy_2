@@ -68,7 +68,6 @@ void KoalaStateNormal::handle(Koala_ *koala)
         }
     }),
                                       NULL));
-    
 }
 
 KoalaStateBack::KoalaStateBack()
@@ -190,10 +189,15 @@ void KoalaStateHorizontalMove::handle(Koala_ *koala)
         koala->getBody()->stopAllActions();
     }),
                                       CallFunc::create([=](){
-                auto animation = AnimationCache::getInstance()->getAnimation("koala_animation_move_right");
+				
+                auto animation = AnimationCache::getInstance()->getAnimation(koala->getFindToy()?"koala_animation_move_left_gift":"koala_animation_move_right");
                 koala->getBody()->runAction(Animate::create(animation));
                 auto pos = koala->getNextMove();
         koala->getBody()->setFlippedX(koala->getNextRelativeMove().x<0?true:false);
+		if (koala->getFindToy())
+		{
+			koala->getBody()->setFlippedX(false);
+		}
         auto move = MoveTo::create(koala->getMoveDuration(), koala->getNextMove());
         if (koala->getFindLadder()) {
             koala->getLadder()->runAction(MoveBy::create(koala->getMoveDuration(), koala->getNextRelativeMove()));

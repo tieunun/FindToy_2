@@ -5,12 +5,12 @@
     <dict>
         <key>toy_postions</key>
         <array>
-            <string>{0,1072693248}</string>
             <string>{0,1073741824}</string>
-            <string>{0,0}</string>
-            <string>{0,1072693248}</string>
             <string>{0,1073741824}</string>
-            <string>{0,0}</string>
+            <string>{0,1073741824}</string>
+            <string>{0,1073741824}</string>
+            <string>{0,1074266112}</string>
+            <string>{0,1074266112}</string>
             <string>{0,1072693248}</string>
             <string>{0,1074266112}</string>
             <string>{0,0}</string>

@@ -1,5 +1,7 @@
 #pragma once
 #include "BaseNode.h"
+#include "SimpleAudioEngine.h"
+using namespace CocosDenshion;
 
 typedef enum
 {

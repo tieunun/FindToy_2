@@ -54,6 +54,7 @@ void ToyBullet::play()
 	auto move1 = MoveBy::create((size.width/2 + 200)/ToyBullet_Speed,Vec2(-size.width/2-200,0));
 	auto move2 = MoveBy::create((size.width+400)/ToyBullet_Speed,Vec2(size.width+400,0));
 	auto move3 = MoveBy::create((size.width/2+200)/ToyBullet_Speed,Vec2(-size.width/2-200,0));
+	auto effectID = SimpleAudioEngine::getInstance()->playEffect("cap_pistol_bullet_fire.mp3");
 	this->runAction(Sequence::create(CallFunc::create([=](){
 		this->setVisible(true);
 	}),move1,
@@ -72,6 +73,9 @@ void ToyBullet::play()
 			auto pistol = (ToyPistol*)this->getParent();
 			pistol->onBulletBack();
 			this->_toyAnimate = false;
+	}),
+		CallFunc::create([=](){
+			SimpleAudioEngine::getInstance()->stopEffect(effectID);
 	})
 		,NULL));
 
@@ -79,7 +83,8 @@ void ToyBullet::play()
 
 bool ToyBullet::OnToyTouched(Touch *touch,Event *event)
 {
-	if (_toyAnimate)
+	auto toy = (ToyPistol*)this->getParent();
+	if (_toyAnimate || toy->getToyAnimate())
 	{
 		return false;
 	}

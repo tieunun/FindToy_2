@@ -12,6 +12,9 @@ public:
 
 	static PlayToyScene *create(ToyType toyType);
 	virtual bool init();
+	virtual void onEnter();
+	virtual void onExit();
+
 	void moveBackground();
 	void moveHelicopter();
     void stopBackgroundMove();

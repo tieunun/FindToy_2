@@ -2,6 +2,7 @@
 #include "GameConfigure.h"
 #include "Ladder.h"
 #include "GameScene.h"
+#include "PlayToyScene.h"
 #define  Toy_Speed 300.0f;
 
 ToyLayer::ToyLayer()
@@ -37,13 +38,27 @@ bool ToyLayer::init()
 	for (int i = 0 ;i < k_toy_count;i++)
 	{
 		auto toy = BaseToy::create((ToyType)i);
-
+		toy->setAnchorPoint(Vec2(0,0));
+		toy->setScale(.8f);
 		_toies.pushBack(toy);
 		this->addChild(toy);
 		toy->setVisible(false);
 	}
 
+	_buyer = Buyer::create();
+	this->addChild(_buyer);
+	_buyer->setPosition(-100,203);
+	_buyer->buy();
 	return true;
+}
+
+void ToyLayer::onEnter()
+{
+	BaseLayer::onEnter();
+	for (auto toy :_toies)
+	{
+		toy->setVisible(false);
+	}
 }
 
 void ToyLayer::moveKoala(cocos2d::Vec2 position)
@@ -145,4 +160,24 @@ void ToyLayer::openDrawer(Vec2 position)
 void ToyLayer::handInToy(ToyType type)
 {
     _koala->handInToy(type);
+}
+
+void ToyLayer::handIn(ToyType type)
+{
+	static auto deskTopPos = Vec2(230,360);
+	auto toyPos = _koala->getPosition()+Vec2(50,-20);
+	auto toy = _toies.at(type);
+	toy->setPosition(toyPos);
+	toy->setVisible(true);
+	auto move = MoveTo::create(toyPos.distance(deskTopPos)/300.0f,deskTopPos);
+	auto rotate = RotateBy::create(.6f,360);
+	auto action = toy->runAction(RepeatForever::create(rotate));
+	action->setTag(106);
+	toy->runAction(Sequence::create(move,CallFunc::create([=](){
+
+		toy->stopAllActions();
+		toy->setRotation(0);
+		auto secen = PlayToyScene::create(type);
+		Director::getInstance()->pushScene(TransitionFade::create(1.5,secen));
+	}),NULL));
 }

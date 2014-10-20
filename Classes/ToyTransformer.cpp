@@ -41,6 +41,7 @@ bool ToyTransformer::OnToyTouched(Touch *touch,Event *event)
 
 void ToyTransformer::play()
 {
+	SimpleAudioEngine::getInstance()->playEffect("toy_transformer_fire.mp3",true,.2f);
 	auto animation_0 = AnimationCache::getInstance()->getAnimation("toy_transformer_animation_0");
 	auto animation_1 = AnimationCache::getInstance()->getAnimation("toy_transformer_animation_1");
 	_body->runAction(Sequence::create(Animate::create(animation_0),Animate::create(animation_1),CallFunc::create(this,callfunc_selector(ToyTransformer::onAnimateDone)),NULL));
@@ -48,6 +49,7 @@ void ToyTransformer::play()
 
 void ToyTransformer::onAnimateDone()
 {
+	SimpleAudioEngine::getInstance()->stopAllEffects();
 	_body->setDisplayFrameWithAnimationName("toy_transformer_animation_0",0);
 	_toyAnimate = false;
 }
