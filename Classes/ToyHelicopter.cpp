@@ -44,7 +44,8 @@ bool ToyHelicopter::onHelicopterTouchBegin(Touch *touch,Event *event)
 	{
 		_toyAnimate = true;
 		auto size = Director::getInstance()->getWinSize();
-		this->runAction(MoveBy::create(Max_Down_Height/Toy_Helicopter_Gravity,Vec2(0,-Max_Down_Height)));
+		auto moveV = this->runAction(MoveBy::create(Max_Down_Height/Toy_Helicopter_Gravity,Vec2(0,-Max_Down_Height)));
+		moveV->setTag(103);
 		auto moveX = size.width/2 - this->getPositionX();
 		auto moveH = MoveBy::create(moveX/Toy_Helicopter_H_Speed,Vec2(moveX,0));
 		moveH->setTag(101);
@@ -76,6 +77,9 @@ void ToyHelicopter::explode()
 	auto animation = AnimationCache::getInstance()->getAnimation("toy_helicopter_animation_explosion");
 	_body->runAction(Sequence::create(Animate::create(animation),CallFunc::create([=](){
 		this->setVisible(false);
+		SimpleAudioEngine::getInstance()->stopAllEffects();
+		auto layer = (PlayToyPlayLayer*)this->getParent();
+		layer->showDetailWithSuccess(false);
 	}),NULL));
 }
 

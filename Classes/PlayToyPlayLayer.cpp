@@ -106,7 +106,8 @@ void PlayToyPlayLayer::update(float dt)
 	{
 		for (auto rect :_rects)
 		{
-            if (rect.intersectsRect(Rect(_toy->getPositionX()-48,-68+_toy->getPositionY(), 182,136))) {
+			auto bgPos = ((PlayToyScene*)this->getParent())->getBackgroundPosition();
+            if (rect.intersectsRect(Rect(_toy->getPositionX()-48-bgPos.x,-68+_toy->getPositionY()+bgPos.y, 182,136))) {
                 auto toy = (ToyHelicopter*)_toy;
                 toy->explode();
                 auto scene = (PlayToyScene*)this->getParent();
@@ -125,10 +126,12 @@ void PlayToyPlayLayer::onHelicopterReachCenter()
 
 void PlayToyPlayLayer::moveHelicopter()
 {
-	auto move = MoveBy::create(_winSize.width/4*3/Toy_Helicopter_H_Speed,Vec2(_winSize.width/4*3,0));
+	auto move = MoveBy::create(_winSize.width/4/Toy_Helicopter_H_Speed,Vec2(_winSize.width/4,0));
 	move->setTag(102);
 	_toy->runAction(Sequence::create(move,CallFunc::create([=](){
 		_toy->stopActionByTag(102);
+		_toy->stopActionByTag(103);
+		this->showDetailWithSuccess(true);
 	}),NULL));
 }
 
@@ -147,7 +150,13 @@ void PlayToyPlayLayer::onDraw(const cocos2d::Mat4 &transform, bool transformUpda
     glLineWidth( 2.0f );
     DrawPrimitives::setDrawColor4B(255,0,0,255);
     
-    //DrawPrimitives::drawRect(_toy->getPosition()+Vec2(-48,-68), _toy->getPosition()+Vec2(125,68));
+    DrawPrimitives::drawRect(_toy->getPosition()+Vec2(-48,-68), _toy->getPosition()+Vec2(125,68));
 
     director->popMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
+}
+
+void PlayToyPlayLayer::showDetailWithSuccess(bool success)
+{
+	auto scene = (PlayToyScene*)this->getParent();
+	scene->showDetailWithSuccess(success);
 }

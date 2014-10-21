@@ -3,6 +3,8 @@
 #include "GameMainBackground.h"
 #include "GameStaticLayer.h"
 #include "ToyLayer.h"
+#include "GameTimeLayer.h"
+#include "GameDetailLayer.h"
 class GameScene :
 	public BaseScene
 {
@@ -17,6 +19,7 @@ public:
     
     void moveKoala(Vec2 position);              //automatic find the way
     void openDrawer(Vec2 position);
+	void showGameOver();
     void handInToy(ToyType type);
     virtual void onEnter();
 	virtual void onExit();
@@ -30,4 +33,6 @@ private:
 	GameMainBackground *_background;
 	GameStaticLayer    *_staticLayer;
     ToyLayer           *_toyLayer;
+	GameTimeLayer	   *_timerLayer;
+	GameDetailLayer		*_detailLayer;
 };

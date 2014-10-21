@@ -32,8 +32,12 @@ bool PlayToyScene::init()
 	_backgroundLayer = PlayToyBackground::create(_toyType);
 	_playLayer		 = PlayToyPlayLayer::create(_toyType);
 	_pannelLayer	 = PlayToyPannelLayer::create(_toyType);
+	_detailLayer	 = PlayToyDetailLayer::create(_toyType);
+	_detailLayer->setVisible(false);
 	this->addChild(_backgroundLayer);
 	this->addChild(_playLayer);
+	this->addChild(_detailLayer);
+
 	this->addChild(_pannelLayer);
 	return true;
 }
@@ -86,6 +90,8 @@ void PlayToyScene::onEnter()
 	case k_toy_helicopter:
 		auido->preloadEffect("toy_helicopter_boom.mp3");
 		auido->preloadEffect("toy_helicopter_flying.mp3");
+		auido->preloadEffect("sound_success.mp3");
+		auido->preloadEffect("common_fail.mp3");
 		break;
 	case k_toy_grab:
 		auido->preloadEffect("toy_grab_run.mp3");
@@ -133,7 +139,9 @@ void PlayToyScene::onExit()
 		break;
 	case k_toy_helicopter:
 		auido->unloadEffect("toy_helicopter_boom.mp3");
-		auido->unloadEffect("toy_helicopter_flying.mp3");
+		//auido->unloadEffect("toy_helicopter_flying.mp3");
+		auido->unloadEffect("sound_success.mp3");
+		auido->unloadEffect("common_fail.mp3");
 		break;
 	case k_toy_grab:
 		auido->unloadEffect("toy_grab_run.mp3");
@@ -148,4 +156,15 @@ void PlayToyScene::onExit()
 	default:
 		break;
 	}
+}
+
+void PlayToyScene::showDetailWithSuccess(bool success)
+{
+	_detailLayer->setVisible(true);
+	_detailLayer->showDetailWithSuceess(success);
+}
+
+Vec2 PlayToyScene::getBackgroundPosition() const
+{
+	return _backgroundLayer->getPosition();
 }

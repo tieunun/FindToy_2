@@ -104,11 +104,11 @@ void PlayToyBackground::onDraw(const cocos2d::Mat4 &transform, bool transformUpd
     glLineWidth( 2.0f );
     DrawPrimitives::setDrawColor4B(255,0,0,255);
     
-//    for(auto rect:_rects)
-//    {
-//        DrawPrimitives::drawRect(rect.origin, rect.origin+rect.size);
-//        
-//    }
+   for(auto rect:_rects)
+   {
+       DrawPrimitives::drawRect(rect.origin, rect.origin+rect.size);
+       
+   }
 //    DrawPrimitives::drawRect(_rects[0].origin, _rects[0].origin+_rects[0].size);
 //    DrawPrimitives::drawRect(Vec2(-178,68), Vec2(174,36));
     

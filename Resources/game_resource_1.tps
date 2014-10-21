@@ -184,6 +184,9 @@
             <filename>buyer_pig_0.png</filename>
             <filename>buyer_pig_1.png</filename>
             <filename>buy_frame.png</filename>
+            <filename>//Txy-pc/贝乐游美术共享/游戏项目/儿童宝宝玩具游戏/场景/页面/drawer_bg.png</filename>
+            <filename>common_game_over_1.png</filename>
+            <filename>common_game_over_0.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

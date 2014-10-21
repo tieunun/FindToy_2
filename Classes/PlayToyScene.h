@@ -3,6 +3,7 @@
 #include "PlayToyBackground.h"
 #include "PlayToyPlayLayer.h"
 #include "PlayToyPannelLayer.h"
+#include "PlayToyDetailLayer.h"
 
 class PlayToyScene :public BaseScene
 {
@@ -18,10 +19,13 @@ public:
 	void moveBackground();
 	void moveHelicopter();
     void stopBackgroundMove();
+	void showDetailWithSuccess(bool success);
+	Vec2 getBackgroundPosition() const;
 private:
 	void preLoadAudioAndEffect();
 	ToyType _toyType;
 	PlayToyBackground *_backgroundLayer;
 	PlayToyPlayLayer  *_playLayer;
 	PlayToyPannelLayer *_pannelLayer;
+	PlayToyDetailLayer *_detailLayer;
 };

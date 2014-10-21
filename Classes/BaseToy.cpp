@@ -133,12 +133,12 @@ Action *BaseToy::createFadeOutAction(bool fadeOut)
 	if (fadeOut)
 	{
 		_body->setOpacity(0);
-		return _body->runAction(FadeIn::create(1));
+		return _body->runAction(FadeIn::create(.6f));
 	}
 	else
 	{
 		_body->setOpacity(255);
-		return _body->runAction(FadeOut::create(1));
+		return _body->runAction(FadeOut::create(.6f));
 	}
 	
 }

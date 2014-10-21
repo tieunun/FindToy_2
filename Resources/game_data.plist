@@ -159,7 +159,7 @@
 	<key>toy_helicopter_rect_1</key>
 	<string>{{538,0},{100,158}}</string>
 	<key>toy_helicopter_rect_2</key>
-	<string>{{690,402},{162,308}}</string>
+	<string>{{690,422},{162,308}}</string>
 	<key>toy_helicopter_rect_3</key>
 	<string>{{954,0},{110,152}}</string>
 	<key>toy_helicopter_rect_4</key>
@@ -232,5 +232,15 @@
 	<string>{1145,521}</string>
 	<key>buy_frame</key>
 	<string>buy_frame.png</string>
+	<key>drawer_bg</key>
+	<string>drawer_bg.png</string>
+	<key>drawer_animation</key>
+	<string>drawer_scroll_%d.png</string>
+	<key>game_timer_bg</key>
+	<string>game_timer_bg.png</string>
+	<key>game_timer_blood</key>
+	<string>game_timer_blood.png</string>
+	<key>game_over_animation</key>
+	<string>common_game_over_%d.png</string>
 </dict>
 </plist>

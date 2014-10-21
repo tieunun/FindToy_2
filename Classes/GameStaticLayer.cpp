@@ -77,17 +77,14 @@ void GameStaticLayer::openDrawer(Vec2 position)
 void GameStaticLayer::PopToy(ToyType type)
 {
     _popToy->popToy(type);
-//    if(type>=0 && type<k_toy_count)
-//    {
-//        auto scene = (GameScene*)this->getParent();
-//        scene->handInToy(type);
-//    }
+
     auto buyerBuyToye = _buyer->getBuySign()->getToyType();
     if (buyerBuyToye != type) {
         
     }
     else
     {
+		SimpleAudioEngine::getInstance()->playEffect("toy_find.mp3");
         Director::getInstance()->getEventDispatcher()->setEnabled(false);
         this->runAction(Sequence::create(DelayTime::create(2.0f),CallFunc::create([=](){
             auto scene = (GameScene*)this->getParent();

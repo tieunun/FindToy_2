@@ -55,7 +55,7 @@ void PopToy::popToy(ToyType type)
 				toy->createFadeOutAction(true);
 			}	
 			_body->setOpacity(0);
-			_body->runAction(FadeIn::create(1));
+			_body->runAction(FadeIn::create(.5f));
 		}
 		),
 			delay
@@ -67,7 +67,7 @@ void PopToy::popToy(ToyType type)
 				toy->createFadeOutAction(false);
 			}
 			_body->setOpacity(255);
-			_body->runAction(FadeOut::create(1));
+			_body->runAction(FadeOut::create(.5f));
 		}
 		),CallFunc::create([=]
 		{

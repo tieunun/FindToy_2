@@ -20,7 +20,7 @@ public:
     Koala_();
     ~Koala_();
     CREATE_FUNC(Koala_);
-    virtual void OnEnter();
+    virtual void onEnter();
     virtual bool init();
     void    changeState(KoalaState_ *state);
     void    move(Vec2 target);

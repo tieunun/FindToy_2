@@ -30,19 +30,26 @@ bool GameScene::init()
     _toyLayer = ToyLayer::create();
     this->addChild(_toyLayer);
     
+	_timerLayer = GameTimeLayer::create();
+	this->addChild(_timerLayer);
+
+	_detailLayer = GameDetailLayer::create();
+	this->addChild(_detailLayer);
+	_detailLayer->setVisible(false);
+
 	return true;
 }
 
 void GameScene::onEnter()
 {
 	BaseScene::onEnter();
+	SimpleAudioEngine::getInstance()->stopAllEffects();
 	SimpleAudioEngine::getInstance()->playBackgroundMusic("main_game_background.mp3",true);
 }
 
 void GameScene::onExit()
 {
 	BaseScene::onExit();
-	SimpleAudioEngine::getInstance()->stopBackgroundMusic(false);
 }
 
 void GameScene::preloadResource()
@@ -276,6 +283,34 @@ void GameScene::preloadResource()
 	animation->setLoops(-1);
 	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("toy_chick_animation"));
 
+	//drawer
+	name = GAME_DATA_STRING("drawer_animation");
+	animation = Animation::create();
+	for (int i = 0;i<3;i++)
+	{
+		auto frame_name = StringUtils::format(name.c_str(),i);
+		auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
+		animation->addSpriteFrame(frame);
+	}
+	animation->setRestoreOriginalFrame(true);
+	animation->setDelayPerUnit(.15f);
+	animation->setLoops(1);
+	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("drawer_animation"));
+
+	//game over
+	name = GAME_DATA_STRING("game_over_animation");
+	animation = Animation::create();
+	for (int i = 0;i<2;i++)
+	{
+		auto frame_name = StringUtils::format(name.c_str(),i);
+		auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
+		animation->addSpriteFrame(frame);
+	}
+	animation->setRestoreOriginalFrame(true);
+	animation->setDelayPerUnit(.2f);
+	animation->setLoops(-1);
+	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("game_over_animation"));
+
 	this->loadBuyerAnimation();
 	this->loadKoalaAnimation();
     this->loadAudio();
@@ -389,9 +424,11 @@ void GameScene::loadKoalaAnimation()
 	frame = SpriteFrameCache::getInstance()->getSpriteFrameByName("koala_front_0.png");
 	animation = Animation::create();
 	animation->addSpriteFrame(frame);
-	animation->setDelayPerUnit(.25f);
+	frame = SpriteFrameCache::getInstance()->getSpriteFrameByName("koala_front_1.png");
+	animation->addSpriteFrame(frame);
+	animation->setDelayPerUnit(1.5f);
 	animation->setRestoreOriginalFrame(false);
-	animation->setLoops(0);
+	animation->setLoops(-1);
 	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("koala_animation_normal"));
 
 	//smile
@@ -447,6 +484,12 @@ void GameScene::loadBuyerAnimation()
 void GameScene::loadAudio()
 {
 	SimpleAudioEngine::getInstance()->preloadBackgroundMusic("main_game_background.mp3");
+	SimpleAudioEngine::getInstance()->preloadEffect("drawer_open.mp3");
+	SimpleAudioEngine::getInstance()->preloadEffect("drawer_click.mp3");
+	SimpleAudioEngine::getInstance()->preloadEffect("buy_toy_pop.mp3");
+	SimpleAudioEngine::getInstance()->preloadEffect("toy_find.mp3");
+
+
 }
 
 void GameScene::moveKoala(cocos2d::Vec2 position)
@@ -469,3 +512,8 @@ void GameScene::handInToy(ToyType type)
     _toyLayer->handInToy(type);
 }
 
+void GameScene::showGameOver()
+{
+	_detailLayer->setVisible(true);
+	_detailLayer->showGameOver();
+}

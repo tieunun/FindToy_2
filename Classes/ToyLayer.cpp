@@ -29,7 +29,7 @@ bool ToyLayer::init()
 
 	_toyPositions = GameConfigure::getInstance()->getToyPosition();
 	_koala = Koala_::create();
-	this->addChild(_koala);
+	this->addChild(_koala,10);
 	_koala->setPosition(386,182);
     _koala->setOriginPos(_koala->getPosition());
     _koala->setTargetPos(_koala->getPosition());
@@ -99,13 +99,14 @@ void ToyLayer::handIn(ToyType type)
 	toy->setPosition(toyPos);
 	toy->setVisible(true);
 	auto move = MoveTo::create(toyPos.distance(deskTopPos)/300.0f,deskTopPos);
-	auto rotate = RotateBy::create(.6f,360);
-	auto action = toy->runAction(RepeatForever::create(rotate));
+	auto rotate = RotateBy::create(toyPos.distance(deskTopPos)/300.0f,720);
+	auto action = toy->runAction(rotate);
 	action->setTag(106);
 	toy->runAction(Sequence::create(move,CallFunc::create([=](){
 
 		toy->stopAllActions();
 		toy->setRotation(0);
+		SimpleAudioEngine::getInstance()->stopBackgroundMusic(false);
 		auto secen = PlayToyScene::create(type);
 		Director::getInstance()->pushScene(TransitionFade::create(1.5,secen));
 	}),NULL));

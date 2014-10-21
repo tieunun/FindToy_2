@@ -192,6 +192,16 @@
             <filename>common_back_btn_sel.png</filename>
             <filename>common_back_btn_nor.png</filename>
             <filename>toy_holder.png</filename>
+            <filename>drawer_scroll_1.png</filename>
+            <filename>drawer_scroll_2.png</filename>
+            <filename>drawer_scroll_3.png</filename>
+            <filename>drawer_scroll_0.png</filename>
+            <filename>game_timer_bg.png</filename>
+            <filename>game_timer_blood.png</filename>
+            <filename>//Txy-pc/贝乐游美术共享/游戏项目/儿童宝宝玩具游戏/场景/common_back_ch_sel.png</filename>
+            <filename>//Txy-pc/贝乐游美术共享/游戏项目/儿童宝宝玩具游戏/场景/common_restart_ch_nor.png</filename>
+            <filename>//Txy-pc/贝乐游美术共享/游戏项目/儿童宝宝玩具游戏/场景/common_restart_ch_sel.png</filename>
+            <filename>//Txy-pc/贝乐游美术共享/游戏项目/儿童宝宝玩具游戏/场景/common_back_ch_nor.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

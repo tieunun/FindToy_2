@@ -32,17 +32,18 @@ bool Koala_::init()
     this->addChild(_body);
     _state = new KoalaStateNormal();
     _targetPos = this->getPosition();
-
-    
+	    
     return true;
 }
 
 Koala_::~Koala_()
 {}
 
-void Koala_::OnEnter()
+void Koala_::onEnter()
 {
     BaseNode::onEnter();
+
+	this->changeState(new KoalaStateNormal());
 }
 
 void Koala_::changeState(KoalaState_ *state)
@@ -171,6 +172,7 @@ void Koala_::openDrawer()
 	if (_isFindToy)
 	{
 		_isFindToy = false;
+		this->changeState(new KoalaStateNormal());
 		layer->handIn(_handInToy);
 	}
 	else
