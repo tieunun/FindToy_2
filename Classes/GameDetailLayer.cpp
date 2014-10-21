@@ -23,7 +23,7 @@ bool GameDetailLayer::init()
 	auto bg = LayerColor::create(Color4B(128,128,128,128));
 	bg->setContentSize(_winSize);
 	this->addChild(bg);
-	auto sub_bg = Sprite::create();
+	auto sub_bg = Sprite::createWithSpriteFrameName("common_game_over_0.png");
 	sub_bg->setPosition(_winSize/2);
 	this->addChild(sub_bg,1,11);
 	auto button1 = MenuItemSprite::create(Sprite::createWithSpriteFrameName("common_back_ch_nor.png"),
@@ -41,6 +41,7 @@ bool GameDetailLayer::init()
 	listener->onTouchBegan = [this](Touch *touch,Event *event)->bool{return this->isVisible()?true:false;};
 	this->_eventDispatcher->addEventListenerWithSceneGraphPriority(listener,this);
 
+    //this->showGameOver();
 	return true;
 }
 
@@ -48,7 +49,7 @@ void GameDetailLayer::showGameOver()
 {
 	SimpleAudioEngine::getInstance()->playEffect("common_fail.mp3");
 	auto bg = (Sprite*)this->getChildByTag(11);
-	auto animation = AnimationCache::getInstance()->getAnimation("game_over_aniamtion");
+	auto animation = AnimationCache::getInstance()->getAnimation("game_over_animation");
 	auto actions = Sequence::create(ScaleTo::create(0.0,0.0),
 		ScaleTo::create(.22f,1.1f),ScaleTo::create(.12f,.9f),
 		ScaleTo::create(.12f,1.0f),Animate::create(animation),NULL);

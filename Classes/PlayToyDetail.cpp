@@ -35,7 +35,7 @@ bool PlayToyDetailLayer::init()
 	{
 	case k_toy_helicopter:
 		{
-		auto sub_bg = Sprite::createWithSpriteFrameName("toy_helicopter_victory.png");
+		auto sub_bg = Sprite::createWithSpriteFrameName("common_game_over_0.png");
 		sub_bg->setPosition(_winSize/2);
 		this->addChild(sub_bg,1,11);
 		auto button1 = MenuItemSprite::create(Sprite::createWithSpriteFrameName("common_back_ch_nor.png"),
@@ -65,13 +65,19 @@ void PlayToyDetailLayer::showDetailWithSuceess(bool success)
 	if (success)
 	{
 		SimpleAudioEngine::getInstance()->playEffect("sound_success.mp3");
-		bg->setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("toy_helicopter_failure.png"));
+        auto animation = Animation::create();
+        animation->addSpriteFrameWithFile("common_game_victory_0.png");
+        animation->addSpriteFrameWithFile("common_game_victory_1.png");
+        animation->setRestoreOriginalFrame(false);
+        animation->setDelayPerUnit(.2f);
+        animation->setLoops(-1);
+        bg->runAction(Animate::create(animation));
 	}
 	else
 	{
 		SimpleAudioEngine::getInstance()->playEffect("common_fail.mp3");
-		bg->setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("toy_helicopter_victory.png"));
-
+        auto animation = AnimationCache::getInstance()->getAnimation("game_over_animation");
+        bg->runAction(Animate::create(animation));
 	}
 }
 

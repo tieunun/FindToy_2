@@ -30,7 +30,7 @@ bool GameTimer::init()
 	this->setContentSize(temp->getContentSize());
 	this->addChild(_timer);
 
-	auto bg = Sprite::create(GAME_DATA_STRING("game_timer_bg"));
+	auto bg = Sprite::createWithSpriteFrameName(GAME_DATA_STRING("game_timer_bg"));
 	this->addChild(bg);
 
 	auto rotate1 = RotateBy::create(.6f,3);

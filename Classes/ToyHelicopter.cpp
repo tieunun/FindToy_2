@@ -54,17 +54,23 @@ bool ToyHelicopter::onHelicopterTouchBegin(Touch *touch,Event *event)
 			layer->onHelicopterReachCenter();
 		}),NULL));
 	}
+    else
+    {
+        auto move = MoveBy::create(.1, Vec2(0,30));
+        //this->setPositionY(this->getPositionY()+10);
+        this->runAction(move);
+    }
 	return true;
 }
 void ToyHelicopter::onHelicopterTouchMove(Touch *touch,Event *event)
 {
-	auto lastLocation = touch->getPreviousLocation();
-	auto curLocation = touch->getLocation();
-	auto move = curLocation.y-lastLocation.y;
-	//if (move>0)
-	//{
-		this->setPosition(this->getPositionX(),this->getPositionY()+move/5);
-	//}
+//	auto lastLocation = touch->getPreviousLocation();
+//	auto curLocation = touch->getLocation();
+//	auto move = curLocation.y-lastLocation.y;
+//	//if (move>0)
+//	//{
+//		this->setPosition(this->getPositionX(),this->getPositionY()+move/5);
+//	//}+
 	
 }
 
