@@ -88,6 +88,7 @@ void ToyDoll::changeCloth(int index)
         {
             return;
         }
+		SimpleAudioEngine::getInstance()->playEffect("change_cloth.mp3");
 //		this->removeChild(_cloth);
 //		_cloth = _clothes.at(index);
 //		this->addChild(_cloth,1);
@@ -109,6 +110,7 @@ void ToyDoll::changeCloth(int index)
 	}
 	else
 	{
+		SimpleAudioEngine::getInstance()->playEffect("change_cloth.mp3");
 		_cloth = _clothes.at(index);
 		this->addChild(_cloth,1);
         _cloth->runAction(progressTo1);

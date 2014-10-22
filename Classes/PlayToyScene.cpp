@@ -83,9 +83,11 @@ void PlayToyScene::onEnter()
 		auido->preloadEffect("toy_pander_cry.mp3");
 		auido->preloadEffect("toy_pander_eat.mp3");
 		auido->preloadEffect("toy_pander_tickle.mp3");
+		auido->preloadEffect("toy_pander_sing.mp3");
 		break;
 	case k_toy_doll:
 		auido->preloadEffect("toy_doll_cloth_click.mp3");
+		auido->preloadEffect("change_cloth.mp3");
 		break;
 	case k_toy_helicopter:
 		auido->preloadEffect("toy_helicopter_boom.mp3");
@@ -133,9 +135,11 @@ void PlayToyScene::onExit()
 		auido->unloadEffect("toy_pander_cry.mp3");
 		auido->unloadEffect("toy_pander_eat.mp3");
 		auido->unloadEffect("toy_pander_tickle.mp3");
+		auido->unloadEffect("toy_pander_sing.mp3");
 		break;
 	case k_toy_doll:
 		auido->unloadEffect("toy_doll_cloth_click.mp3");
+		auido->unloadEffect("change_cloth.mp3");
 		break;
 	case k_toy_helicopter:
 		auido->unloadEffect("toy_helicopter_boom.mp3");

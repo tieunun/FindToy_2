@@ -11,6 +11,7 @@ public:
 	virtual bool init();
 	virtual void onEnter();
 	void showGameOver();
+	void showPause();
 private:
 	GameTimer *_gameTimer;
 };

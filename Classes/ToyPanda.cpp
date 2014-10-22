@@ -65,7 +65,7 @@ void ToyPanda::setState(PandaState var)
 		{
 		case k_panda_tickle:
 			{
-				SimpleAudioEngine::getInstance()->playEffect("toy_pander_tickle.mp3",true);
+				SimpleAudioEngine::getInstance()->playEffect("toy_panda_tickle.mp3",true);
 			_body->setVisible(true);
 			_downPart->setVisible(false);
 			_hand->setVisible(false);
@@ -76,7 +76,7 @@ void ToyPanda::setState(PandaState var)
 			break;
 		case  k_panda_cry:
 			{
-				SimpleAudioEngine::getInstance()->playEffect("toy_pander_cry.mp3",true);
+				SimpleAudioEngine::getInstance()->playEffect("toy_panda_cry.mp3",true);
 			_body->setVisible(true);
 			_downPart->setVisible(false);
 			_hand->setVisible(false);
@@ -87,6 +87,7 @@ void ToyPanda::setState(PandaState var)
 			break;
 		case k_panda_smile:
 			{
+				SimpleAudioEngine::getInstance()->playEffect("toy_panda_sing.mp3",true);
 			_body->setVisible(true);
 			_head->setVisible(true);
 			_downPart->setVisible(false);
@@ -97,7 +98,7 @@ void ToyPanda::setState(PandaState var)
 			break;
 		case k_panda_eat:
 			{
-				SimpleAudioEngine::getInstance()->playEffect("toy_pander_eat.mp3",true);
+				SimpleAudioEngine::getInstance()->playEffect("toy_panda_eat.mp3",true);
 
 			_body->setVisible(false);
 			_head->setVisible(true);

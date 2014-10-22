@@ -224,4 +224,4 @@ proj.win32/
 proj.wp8-xaml/
 .cocos-project.json
 CMakeLists.txt
-
+.svn

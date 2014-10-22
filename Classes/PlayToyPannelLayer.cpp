@@ -1,4 +1,6 @@
 #include "PlayToyPannelLayer.h"
+#include "PlayToyScene.h"
+#include "GameStartScene.h"
 
 PlayToyPannelLayer::PlayToyPannelLayer()
 {
@@ -40,5 +42,13 @@ PlayToyPannelLayer *PlayToyPannelLayer::create(ToyType type)
 
 void PlayToyPannelLayer::onBackButtonClicked()
 {
-	Director::getInstance()->popScene();
+	PlayToyScene *scene = (PlayToyScene*)this->getParent();
+	if (scene->getToyCount()>=10)
+	{
+		Director::getInstance()->replaceScene(TransitionFade::create(1.0f,GameStartScene::create()));
+	}
+	else
+	{
+		Director::getInstance()->popScene();
+	}
 }

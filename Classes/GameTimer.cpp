@@ -41,6 +41,9 @@ bool GameTimer::init()
 	auto move2 = MoveBy::create(1.2f,Vec2(0,20));
 	this->runAction(RepeatForever::create(Sequence::create(move1,move2,move1,NULL)));
 
+	_label = Label::createWithCharMap("common_number.png",31.2,36,'0');
+	this->addChild(_label);
+	_label->setPosition(270,-5);
 
 	return true;
 }
@@ -60,8 +63,11 @@ void GameTimer::update(float dt)
 		auto layer = (GameTimeLayer*)this->getParent();
 		SimpleAudioEngine::getInstance()->stopAllEffects();
 		layer->showGameOver();
+		_label->stopAllActions();
 		this->unscheduleUpdate();
 	}
+	auto time = (int)(_timer->getPercentage()*_time/100);
+    _label->setString(StringUtils::format("%d",time));
 	if (blink)
 	{
 		if (countdown)
@@ -73,6 +79,7 @@ void GameTimer::update(float dt)
 			if (_timer->getPercentage()<10)
 			{
 				countdown = true;
+				_label->runAction(RepeatForever::create(Blink::create(1,2)));
 				SimpleAudioEngine::getInstance()->playEffect("timer_count_down.mp3",true);
 			}
 		}
@@ -94,6 +101,7 @@ void GameTimer::BeginToTime(float time)
 	{
 		_time = time;
 	}
+	_label->setString(StringUtils::format("%d",(int)time));
 	_timer->stopAllActions();
 	_timer->setPercentage(100);
 	auto progressTo = ProgressTo::create(_time/_speed,0);

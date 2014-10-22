@@ -107,7 +107,12 @@ void ToyLayer::handIn(ToyType type)
 		toy->stopAllActions();
 		toy->setRotation(0);
 		SimpleAudioEngine::getInstance()->stopBackgroundMusic(false);
+
+		GameScene *gameScene = (GameScene*)this->getParent();
+		int count = gameScene->getStaticLayer()->getBuyer()->getBuyedToies().size();
+
 		auto secen = PlayToyScene::create(type);
+		secen->setToyCount(count);
 		Director::getInstance()->pushScene(TransitionFade::create(1.5,secen));
 	}),NULL));
 }

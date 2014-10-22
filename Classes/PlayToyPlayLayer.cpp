@@ -43,7 +43,7 @@ bool PlayToyPlayLayer::init()
 			clotheShelf->setPosition(317,331);
 			this->addChild(clotheShelf);
 
-			_toy->setPosition(987,381);
+			_toy->setPosition(987,362);
 		}
 		break;
 	case k_toy_helicopter:
@@ -135,25 +135,25 @@ void PlayToyPlayLayer::moveHelicopter()
 	}),NULL));
 }
 
-void PlayToyPlayLayer::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags)
-{
-    _customCommand.init(_globalZOrder);
-    _customCommand.func = CC_CALLBACK_0(PlayToyPlayLayer::onDraw, this, transform, flags);
-    renderer->addCommand(&_customCommand);
-   }
-
-void PlayToyPlayLayer::onDraw(const cocos2d::Mat4 &transform, bool transformUpdated)
-{
-    Director* director = Director::getInstance();
-    director->pushMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
-    director->loadMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW, transform);
-    glLineWidth( 2.0f );
-    DrawPrimitives::setDrawColor4B(255,0,0,255);
-    
-    DrawPrimitives::drawRect(_toy->getPosition()+Vec2(-48,-68), _toy->getPosition()+Vec2(125,68));
-
-    director->popMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
-}
+// void PlayToyPlayLayer::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t flags)
+// {
+//     _customCommand.init(_globalZOrder);
+//     _customCommand.func = CC_CALLBACK_0(PlayToyPlayLayer::onDraw, this, transform, flags);
+//     renderer->addCommand(&_customCommand);
+//    }
+// 
+// void PlayToyPlayLayer::onDraw(const cocos2d::Mat4 &transform, bool transformUpdated)
+// {
+//     Director* director = Director::getInstance();
+//     director->pushMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
+//     director->loadMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW, transform);
+//     glLineWidth( 2.0f );
+//     DrawPrimitives::setDrawColor4B(255,0,0,255);
+//     
+//     DrawPrimitives::drawRect(_toy->getPosition()+Vec2(-48,-68), _toy->getPosition()+Vec2(125,68));
+// 
+//     director->popMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
+// }
 
 void PlayToyPlayLayer::showDetailWithSuccess(bool success)
 {

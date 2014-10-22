@@ -19,8 +19,9 @@ public:
     virtual void onExit();
     void openDrawer(Vec2 position);
     void PopToy(ToyType type);
+	CC_SYNTHESIZE(Buyer*,_buyer,Buyer);
 private:
     Shelf *_shelf;
     class PopToy *_popToy;
-    Buyer  *_buyer;
+	//Buyer  *_buyer;
 };

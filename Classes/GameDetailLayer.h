@@ -10,8 +10,14 @@ public:
 	CREATE_FUNC(GameDetailLayer);
 	virtual bool init();
 	void showGameOver();
-
+	void showPause();
 private:
+	void initGameOver();
+	void initGamePause();
 	void onBackTouched();
 	void onRestartTouched();
+	void onContinueTouched();
+	LayerMultiplex *_layers;
+	Layer *_gamePause;
+	Layer *_gameOver;
 };

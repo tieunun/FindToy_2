@@ -17,8 +17,8 @@ public:
 	void showDetailWithSuccess(bool success);
 	void update(float dt);
 
-    virtual void draw(Renderer *renderer, const Mat4 &transform, uint32_t flags) override;
-    void onDraw(const Mat4 &transform, bool transformUpdated);
+//     virtual void draw(Renderer *renderer, const Mat4 &transform, uint32_t flags) override;
+//     void onDraw(const Mat4 &transform, bool transformUpdated);
 private:
 	BaseToy *_toy;
 	std::vector<Rect> _rects;

@@ -21,6 +21,8 @@ public:
     void stopBackgroundMove();
 	void showDetailWithSuccess(bool success);
 	Vec2 getBackgroundPosition() const;
+
+	CC_SYNTHESIZE(int,_toyCount,ToyCount);
 private:
 	void preLoadAudioAndEffect();
 	ToyType _toyType;

@@ -1,6 +1,7 @@
 #include "AppDelegate.h"
 #include "GameScene.h"
 #include "PlayToyScene.h"
+#include "GameStartScene.h"
 
 USING_NS_CC;
 
@@ -18,7 +19,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        glview = GLView::create("My Game");
+        glview = GLViewImpl::create("My Game");
         director->setOpenGLView(glview);
     }
 
@@ -30,12 +31,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
 
-	auto scene1 = GameScene::create();
+	//auto scene1 = GameScene::create();
+		auto scene = GameStartScene::create();
      //create a scene. it's an autorelease object
-    auto scene = PlayToyScene::create(k_toy_helicopter);
+    auto scene2 = PlayToyScene::create(k_toy_doll);
+
 
     // run
-    director->runWithScene(scene);
+    director->runWithScene(scene2);
 
     return true;
 }

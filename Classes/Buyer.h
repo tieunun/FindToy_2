@@ -22,9 +22,9 @@ public:
 	CC_SYNTHESIZE(Sprite*,_body,Body);
 	CC_SYNTHESIZE(BuyerType,_buyerType,BuyerType);
     CC_SYNTHESIZE(BuySign*, _buySign, BuySign);
+	CC_SYNTHESIZE(std::vector<ToyType>,_buyedToies,BuyedToies);
 
 	void buy();
 	void leave();
 private:
-	std::vector<ToyType> _buyedToies;
 };

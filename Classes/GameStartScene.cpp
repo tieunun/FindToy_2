@@ -1,60 +1,38 @@
-
-#include "GameScene.h"
+#include "GameStartScene.h"
 #include "GameConfigure.h"
-#include "SimpleAudioEngine.h"
-using namespace CocosDenshion;
-#define GAME_RESOURCE_PATH "game_resource.plist"
 
-	GameScene::GameScene(void)
+GameStartScene::GameStartScene()
 {
+
 }
 
-GameScene::~GameScene(void)
+GameStartScene::~GameStartScene()
 {
+
 }
 
-bool GameScene::init()
+bool GameStartScene::init()
 {
 	if (!BaseScene::init())
 	{
 		return false;
 	}
-	//this->preloadResource();
 
-	_background = GameMainBackground::create();
-	this->addChild(_background);
 
-	_staticLayer = GameStaticLayer::create();
-	this->addChild(_staticLayer);
 
-    _toyLayer = ToyLayer::create();
-    this->addChild(_toyLayer);
-    
-	_timerLayer = GameTimeLayer::create();
-	this->addChild(_timerLayer);
+	_menuLayer = StartMenuLayer::create();
+	this->addChild(_menuLayer);
 
-	_detailLayer = GameDetailLayer::create();
-	this->addChild(_detailLayer);
-	_detailLayer->setVisible(false);
+	this->preloadResource();
 
+	SimpleAudioEngine::getInstance()->preloadBackgroundMusic("start_background.mp3");
+	SimpleAudioEngine::getInstance()->playBackgroundMusic("start_background.mp3",true);
 	return true;
 }
 
-void GameScene::onEnter()
+void GameStartScene::preloadResource()
 {
-	BaseScene::onEnter();
-	SimpleAudioEngine::getInstance()->stopAllEffects();
-	SimpleAudioEngine::getInstance()->playBackgroundMusic("main_game_background.mp3",true);
-}
-
-void GameScene::onExit()
-{
-	BaseScene::onExit();
-}
-
-void GameScene::preloadResource()
-{
-	SpriteFrameCache::getInstance()->addSpriteFramesWithFile(GAME_RESOURCE_PATH);
+	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("game_resource.plist");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("game_resource_1.plist");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("toy_animation_0.plist");
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("toy_animation_1.plist");
@@ -63,23 +41,23 @@ void GameScene::preloadResource()
 
 	//animation
 	//pistol
-    auto count = GAME_DATA_INT("toy_cap_pistol_animation_count");
-    auto name  = GAME_DATA_STRING("toy_cap_pistol_animation");
-    auto animation = Animation::create();
-    for(int i = 0;i < count ;i++)
-    {
-        auto frame_name = StringUtils::format(name.c_str(),i);
-        auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
-        animation->addSpriteFrame(frame);
-    }
-    animation->setDelayPerUnit(.2f);
-    animation->setLoops(8);
-    animation->setRestoreOriginalFrame(true);
-    AnimationCache::getInstance()->addAnimation(animation, "toy_cap_pistol_animation");
+	auto count = GAME_DATA_INT("toy_cap_pistol_animation_count");
+	auto name  = GAME_DATA_STRING("toy_cap_pistol_animation");
+	auto animation = Animation::create();
+	for(int i = 0;i < count ;i++)
+	{
+		auto frame_name = StringUtils::format(name.c_str(),i);
+		auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
+		animation->addSpriteFrame(frame);
+	}
+	animation->setDelayPerUnit(.2f);
+	animation->setLoops(8);
+	animation->setRestoreOriginalFrame(true);
+	AnimationCache::getInstance()->addAnimation(animation, "toy_cap_pistol_animation");
 
 	//transformer
 	name = GAME_DATA_STRING("toy_transformer_animation");
-	
+
 	for ( int i = 0 ;i < 2;i++)
 	{
 		animation = Animation::create();
@@ -92,11 +70,11 @@ void GameScene::preloadResource()
 			auto frame_name = StringUtils::format(name.c_str(),i,j);
 			auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
 			animation->addSpriteFrame(frame);
-			
+
 		}
 
 		animation->setDelayPerUnit(.2f);
-		
+
 		if ( i == 0)
 		{
 			animation->setRestoreOriginalFrame(false);
@@ -164,7 +142,7 @@ void GameScene::preloadResource()
 	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("toy_panda_animation_head_eat"));
 
 	name = GAME_DATA_STRING("toy_panda_animation_hand_eat");
-	
+
 	for ( int i = 0;i< 2;i++)
 	{
 		animation = Animation::create();
@@ -227,20 +205,20 @@ void GameScene::preloadResource()
 	animation->setDelayPerUnit(.25f);
 	animation->setLoops(1);
 	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("toy_helicopter_animation_explosion"));
-    
-    //grab
-    name = GAME_DATA_STRING("toy_grab_animation");
-    animation = Animation::create();
-    for (int i = 0;i<11;i++)
-    {
-        auto frame_name = StringUtils::format(name.c_str(),i);
-        auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
-        animation->addSpriteFrame(frame);
-    }
-    animation->setRestoreOriginalFrame(true);
-    animation->setDelayPerUnit(.1f);
-    animation->setLoops(-1);
-    AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("toy_grab_animation"));
+
+	//grab
+	name = GAME_DATA_STRING("toy_grab_animation");
+	animation = Animation::create();
+	for (int i = 0;i<11;i++)
+	{
+		auto frame_name = StringUtils::format(name.c_str(),i);
+		auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
+		animation->addSpriteFrame(frame);
+	}
+	animation->setRestoreOriginalFrame(true);
+	animation->setDelayPerUnit(.1f);
+	animation->setLoops(-1);
+	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("toy_grab_animation"));
 
 	//dragon
 	name = GAME_DATA_STRING("toy_dragon_animation_fly");
@@ -313,19 +291,19 @@ void GameScene::preloadResource()
 
 	this->loadBuyerAnimation();
 	this->loadKoalaAnimation();
-    this->loadAudio();
+	this->loadAudio();
 }
 
-void GameScene::loadKoalaAnimation()
+void GameStartScene::loadKoalaAnimation()
 {
-    //log(FileUtils::getInstance()->fullPathForFilename("toy_animation_0.png").c_str());
+	//log(FileUtils::getInstance()->fullPathForFilename("toy_animation_0.png").c_str());
 	//front turn left
 	auto name = GAME_DATA_STRING("koala_animation_front_turn_left");
 	auto animation = Animation::create();
 	for (int i = 0;i<2;i++)
 	{
 		auto frame_name = StringUtils::format(name.c_str(),i);
-        auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
+		auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
 		animation->addSpriteFrame(frame);
 	}
 	animation->setDelayPerUnit(.4f);
@@ -339,7 +317,7 @@ void GameScene::loadKoalaAnimation()
 	for (int i = 0;i<2;i++)
 	{
 		auto frame_name = StringUtils::format(name.c_str(),i);
-        auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
+		auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
 		animation->addSpriteFrame(frame);
 	}
 	animation->setDelayPerUnit(.25f);
@@ -352,13 +330,13 @@ void GameScene::loadKoalaAnimation()
 	animation = Animation::create();
 	for (int i = 0;i<2;i++)
 	{
-        auto frame_name = StringUtils::format(name.c_str(),i);
-        auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
-        animation->addSpriteFrame(frame);
+		auto frame_name = StringUtils::format(name.c_str(),i);
+		auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
+		animation->addSpriteFrame(frame);
 	}
-    auto frame_temp = SpriteFrameCache::getInstance()->getSpriteFrameByName("koala_back_0.png");
-    animation->addSpriteFrame(frame_temp);
-    //animation->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("koala_back_0.png"));
+	auto frame_temp = SpriteFrameCache::getInstance()->getSpriteFrameByName("koala_back_0.png");
+	animation->addSpriteFrame(frame_temp);
+	//animation->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("koala_back_0.png"));
 	animation->setDelayPerUnit(.4f);
 	animation->setRestoreOriginalFrame(false);
 	animation->setLoops(0);
@@ -369,10 +347,10 @@ void GameScene::loadKoalaAnimation()
 	animation = Animation::create();
 	for (int i = 1;i<=2;i++)
 	{
-        auto frame_name = StringUtils::format(name.c_str(),i);
-        auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
-        animation->addSpriteFrame(frame);
-    }
+		auto frame_name = StringUtils::format(name.c_str(),i);
+		auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
+		animation->addSpriteFrame(frame);
+	}
 	animation->setDelayPerUnit(.25f);
 	animation->setRestoreOriginalFrame(false);
 	animation->setLoops(-1);
@@ -383,9 +361,9 @@ void GameScene::loadKoalaAnimation()
 	animation = Animation::create();
 	for (int i = 0;i<2;i++)
 	{
-        auto frame_name = StringUtils::format(name.c_str(),i);
-        auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
-        animation->addSpriteFrame(frame);
+		auto frame_name = StringUtils::format(name.c_str(),i);
+		auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frame_name);
+		animation->addSpriteFrame(frame);
 	}
 	animation->setDelayPerUnit(.25f);
 	animation->setRestoreOriginalFrame(false);
@@ -394,7 +372,7 @@ void GameScene::loadKoalaAnimation()
 
 	//drag ladder
 	name = GAME_DATA_STRING("koala_animation_drag_ladder");
-    auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(name);
+	auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(name);
 	animation = Animation::create();
 	animation->addSpriteFrame(frame);
 	animation->setDelayPerUnit(.25f);
@@ -403,7 +381,7 @@ void GameScene::loadKoalaAnimation()
 	AnimationCache::getInstance()->addAnimation(animation, StringUtils::format("koala_animation_drag_ladder"));
 
 	//back
-    frame = SpriteFrameCache::getInstance()->getSpriteFrameByName("koala_back_0.png");
+	frame = SpriteFrameCache::getInstance()->getSpriteFrameByName("koala_back_0.png");
 	animation = Animation::create();
 	animation->addSpriteFrame(frame);
 	animation->setDelayPerUnit(.25f);
@@ -459,7 +437,7 @@ void GameScene::loadKoalaAnimation()
 
 }
 
-void GameScene::loadBuyerAnimation()
+void GameStartScene::loadBuyerAnimation()
 {
 	char *frame_name = "buyer_%s_%d.png";
 	std::string buyer_names[] = {"monkey","rabbit","sheep","pig"};
@@ -470,9 +448,9 @@ void GameScene::loadBuyerAnimation()
 		for (int j = 0 ;j<3;j++)
 		{
 			auto name = StringUtils::format(frame_name,buyer_names[i].c_str(),j);
-            auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(name);
-            animation->addSpriteFrame(frame);
-//            animation->addSpriteFrameWithFile(name);
+			auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(name);
+			animation->addSpriteFrame(frame);
+			//            animation->addSpriteFrameWithFile(name);
 		}
 		animation->setDelayPerUnit(.25f);
 		animation->setRestoreOriginalFrame(true);
@@ -481,80 +459,13 @@ void GameScene::loadBuyerAnimation()
 	}
 }
 
-void GameScene::loadAudio()
+void GameStartScene::loadAudio()
 {
 	SimpleAudioEngine::getInstance()->preloadBackgroundMusic("main_game_background.mp3");
 	SimpleAudioEngine::getInstance()->preloadEffect("drawer_open.mp3");
 	SimpleAudioEngine::getInstance()->preloadEffect("drawer_click.mp3");
 	SimpleAudioEngine::getInstance()->preloadEffect("buy_toy_pop.mp3");
 	SimpleAudioEngine::getInstance()->preloadEffect("toy_find.mp3");
-}
 
-void GameScene::moveKoala(cocos2d::Vec2 position)
-{
-    _toyLayer->moveKoala(position);
-}
 
-void GameScene::setDrawerShouldTouch(bool touch)
-{
-	_staticLayer->setShouldDrawerTouched(touch);
-}
-
-void GameScene::openDrawer(cocos2d::Vec2 position)
-{
-    _staticLayer->openDrawer(position);
-}
-
-void GameScene::handInToy(ToyType type)
-{
-    _toyLayer->handInToy(type);
-}
-
-void GameScene::showGameOver()
-{
-	
-	_detailLayer->setVisible(true);
-	_detailLayer->showGameOver();
-	this->pauseGame();
-}
-
-void GameScene::showPause()
-{
-	_detailLayer->setVisible(true);
-	_detailLayer->showPause();
-	this->pauseGame();
-}
-
-void GameScene::pauseGame()
-{
-	this->operationAllSchedulerAndActions(_timerLayer,k_game_pause);
-	this->operationAllSchedulerAndActions(_staticLayer,k_game_pause);
-}
-
-void GameScene::resumeGame()
-{
-	this->operationAllSchedulerAndActions(_timerLayer,k_game_running);
-	this->operationAllSchedulerAndActions(_staticLayer,k_game_running);
-}
-
-void GameScene::operationAllSchedulerAndActions(Node *node,GameState state)
-{
-	if (node->isRunning())
-	{
-		switch (state)
-		{
-		case k_game_pause:
-			node->pauseSchedulerAndActions();
-			break;
-		case k_game_running:
-			node->resumeSchedulerAndActions();
-			break;
-		default:
-			break;
-		}
-		for (Node *child : node->getChildren())
-		{
-			this->operationAllSchedulerAndActions(child,state);
-		}
-	}
 }

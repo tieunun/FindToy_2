@@ -5,6 +5,11 @@
 #include "ToyLayer.h"
 #include "GameTimeLayer.h"
 #include "GameDetailLayer.h"
+enum GameState
+{
+	k_game_pause,
+	k_game_running
+};
 class GameScene :
 	public BaseScene
 {
@@ -20,18 +25,23 @@ public:
     void moveKoala(Vec2 position);              //automatic find the way
     void openDrawer(Vec2 position);
 	void showGameOver();
+	void showPause();
+	void resumeGame();
     void handInToy(ToyType type);
     virtual void onEnter();
 	virtual void onExit();
 	void setDrawerShouldTouch(bool touch);
 
+	CC_SYNTHESIZE(GameStaticLayer*,_staticLayer,StaticLayer);
+
 private:
 
+	void pauseGame();
+	void operationAllSchedulerAndActions(Node *node,GameState state);
 	void loadKoalaAnimation();
 	void loadAudio();
 	void loadBuyerAnimation();
 	GameMainBackground *_background;
-	GameStaticLayer    *_staticLayer;
     ToyLayer           *_toyLayer;
 	GameTimeLayer	   *_timerLayer;
 	GameDetailLayer		*_detailLayer;

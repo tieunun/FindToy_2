@@ -53,7 +53,10 @@ bool PlayToyDetailLayer::init()
 		break;
 	}
 
-
+	auto listener = EventListenerTouchOneByOne::create();
+	listener->setSwallowTouches(true);
+	listener->onTouchBegan = [this](Touch *touch,Event *event)->bool{return this->isVisible()?true:false;};
+	this->_eventDispatcher->addEventListenerWithSceneGraphPriority(listener,this);
 
 	return true;
 }

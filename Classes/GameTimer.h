@@ -16,4 +16,5 @@ public:
 	void BeginToTime(float time=0);
 private:
 	ProgressTimer *_timer;
+	Label *_label;
 };
