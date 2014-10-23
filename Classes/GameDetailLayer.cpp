@@ -24,6 +24,7 @@ bool GameDetailLayer::init()
 	auto bg = LayerColor::create(Color4B(128,128,128,128));
 	bg->setContentSize(_winSize);
 	this->addChild(bg);
+//<<<<<<< Updated upstream
 
 	_layers = LayerMultiplex::create();
 	this->addChild(_layers);
@@ -38,6 +39,8 @@ void GameDetailLayer::initGameOver()
 {
 	_gameOver = Layer::create();
 	_layers->addLayer(_gameOver);
+//=======
+//>>>>>>> Stashed changes
 	auto sub_bg = Sprite::createWithSpriteFrameName("common_game_over_0.png");
 	sub_bg->setPosition(_winSize/2);
 	_gameOver->addChild(sub_bg,1,11);
@@ -59,6 +62,7 @@ void GameDetailLayer::initGameOver()
 	this->_eventDispatcher->addEventListenerWithSceneGraphPriority(listener,_gameOver);
 }
 
+//<<<<<<< Updated upstream
 void GameDetailLayer::initGamePause()
 {
 	_gamePause = Layer::create();
@@ -83,13 +87,21 @@ void GameDetailLayer::initGamePause()
 	listener->setSwallowTouches(true);
 	listener->onTouchBegan = [this](Touch *touch,Event *event)->bool{return this->isVisible()?true:false;};
 	this->_eventDispatcher->addEventListenerWithSceneGraphPriority(listener,_gamePause);
+//=======
+    //this->showGameOver();
+	return ;
+//>>>>>>> Stashed changes
 }
 
 void GameDetailLayer::showGameOver()
 {
 	_layers->switchTo(0);
 	SimpleAudioEngine::getInstance()->playEffect("common_fail.mp3");
+//<<<<<<< Updated upstream
 	auto bg = (Sprite*)_gameOver->getChildByTag(11);
+//=======
+	//auto bg = (Sprite*)this->getChildByTag(11);
+//>>>>>>> Stashed changes
 	auto animation = AnimationCache::getInstance()->getAnimation("game_over_animation");
 	auto actions = Sequence::create(ScaleTo::create(0.0,0.0),
 		ScaleTo::create(.22f,1.1f),ScaleTo::create(.12f,.9f),
